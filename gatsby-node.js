@@ -56,7 +56,6 @@ exports.createPages = ({ actions, graphql }) => {
         filteredPosts[relatedIndexes[2]].node, filteredPosts[relatedIndexes[3]].node,
         filteredPosts[relatedIndexes[4]].node,
         filteredPosts[relatedIndexes[5]].node]
-        console.log(related)
       }
 
       createPage({
