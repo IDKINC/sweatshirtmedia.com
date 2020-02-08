@@ -235,7 +235,7 @@ h4{
   @media ${breakpoints.laptop} {
     font-size: inherit;
 
-  }
+  } 
 }
 
 &:hover{
