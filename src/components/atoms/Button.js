@@ -41,11 +41,14 @@ background: var(--mainColor);
 
 &.button--medium{
 }
-
 &.button--large{
-  font-size: 1.5em;
+  font-size: 1rem;
   width: 100%;
   font-weight: 900;
+
+  @media ${breakpoints.laptop} {
+    font-size: 1.5em;
+  }
 }
 `
 
@@ -91,9 +94,13 @@ cursor: pointer;
 }
 
 &.button--large{
-  font-size: 1.5em;
+  font-size: 1rem;
   width: 100%;
   font-weight: 900;
+
+  @media ${breakpoints.laptop} {
+    font-size: 1.5em;
+  }
 }
 `
 

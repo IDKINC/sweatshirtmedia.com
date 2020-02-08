@@ -2,6 +2,9 @@ import React from 'react'
 import { navigate } from 'gatsby-link'
 import PropTypes from "prop-types"
 
+import { breakpoints } from "../breakpoints"
+
+
 import styled from "styled-components"
 import Button from '../atoms/Button'
 
@@ -121,7 +124,13 @@ ContactForm.defaultProps = {
 
 
 const Form = styled.form`
-font-size: 1.5rem;
+font-size: 1rem;
+
+@media ${breakpoints.laptop} {
+    font-size: 1.5rem;
+
+
+}
 
 label{
     color: #999;
@@ -141,7 +150,7 @@ input, textarea{
     border-radius: var(--borderRadius);
     padding: 0.25em 0.5em;
     transition: 300ms;
-    border: 2px solid #fff;
+    border: 2px solid #ccc;
 
     &:focus{
         border: 2px solid var(--darkerColor);
@@ -156,12 +165,19 @@ input, textarea{
 textarea{
     resize: vertical;
 
+    height: 6em;
+
+
+    @media ${breakpoints.laptop} {
+
     height: 3em;
 
 
     &:focus, &:valid{
         height: 8em;
     }
+
+}
 }
 
 

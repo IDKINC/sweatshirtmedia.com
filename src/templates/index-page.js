@@ -221,12 +221,16 @@ transition: 100ms;
 box-shadow: var(--boxShadow);
 border-radius: var(--borderRadius);
 
+display: flex;
+align-items: center;
+justify-content: center;
+
 h4{
   margin: 0;
   text-align: center;
 
 
-  font-size: 1em;
+  font-size: 0.8em;
 
   @media ${breakpoints.laptop} {
     font-size: inherit;

@@ -6,6 +6,8 @@
 
 $mainColor: #9c27b0;
 $darkerColor: darken($mainColor, 10);
+@import "~bulma";
+
 
 :root {
   --mainColor: #a29bfe;
