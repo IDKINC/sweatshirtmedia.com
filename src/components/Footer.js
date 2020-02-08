@@ -21,7 +21,7 @@ const Footer = class extends React.Component {
         {this.props.cta && <FooterCTA>
 
           <div>
-            <h2>We'd love to hear from you.</h2>
+            <h2>Like What You See? Let's Talk</h2>
           </div>
 
           <ContactForm />
