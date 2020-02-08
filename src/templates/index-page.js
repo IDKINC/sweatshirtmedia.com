@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
 import logo from '../img/logo.svg'
 
@@ -18,9 +18,12 @@ import SocialIcons from '../components/SocialIcons'
 
 import VideoBanner from '../components/VideoBanner'
 
+import { Container } from '../components/atoms/Container'
+
 import BannerCover from "../img/videobg.jpg"
 
 import SweatshirtIcon from "../img/sweatshirt-icon.svg"
+import Button from '../components/atoms/Button'
 
 
 
@@ -43,9 +46,8 @@ export const IndexPageTemplate = ({
         <div style={{ zIndex: "999", position: "relative" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
-
-            <Link to="/portfolio">See Our Work</Link>
-            <Link to="/contact">Get In Touch &raquo;</Link>
+      <Button to="/portfolio" label="See Our Work" white/>
+      <Button to="/contact" label="Get In Touch &raquo;"/>
 
 
 
@@ -64,7 +66,8 @@ export const IndexPageTemplate = ({
             <ProjectCard project={project} />
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
-        <MorePortfolio href="/portfolio" className="button">See The Rest Of Our Work &raquo;</MorePortfolio>
+
+        <Button to="/portfolio" label="See The Rest Of Our Work &raquo;" size="large" style={{gridColumn:"1 / -1"}}/>
         </Grid>
 
 
@@ -210,26 +213,7 @@ export const pageQuery = graphql`
 
 
 
-const Container = styled.section`
-  width: 100%;
-  min-height: 20vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 5vh 1vh;
-  background: #fff;
 
-  & > h1{
-    text-align: center;
-
-    
-  @media ${breakpoints.laptop} {
-    font-size: 5em;
-    }
-  }
-`
 const SkillsCard = styled.div`
 background: #fff;
 padding: 1rem;
@@ -321,42 +305,6 @@ color: #fff;
 
     }
 
-  a{ 
-    color: inherit;
-    text-decoration: none;
-    padding: 0.5em;
-    border-radius: var(--borderRadius);
-    border: 1px solid #fff;
-    width: 100%;
-    text-align: center;
-    transition: 100ms;
-    margin-bottom: 1em;
-    &:hover{
-      background: rgba(255,255,255,0.2);
-    }
-
-
-    @media ${breakpoints.laptop} {
-      
-      margin-bottom: 0;
-
-    }
-
-
-    &:last-of-type{
-      background: var(--mainColor);
-      font-weight: 900;
-      border: 1px solid var(--darkerColor);
-      margin-bottom: 0;
-
-      &:hover{
-        background: var(--darkerColor);
-      }
-    }
-    
-    
-
-}
 `
 
 

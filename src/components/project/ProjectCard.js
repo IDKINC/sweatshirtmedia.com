@@ -63,6 +63,10 @@ const Card = styled.div`
 
   &:hover{
 
+    ${Meta}{
+      color: var(--mainColor);
+    }
+
     ${ImgWrapper}{
       img{
         transform: scale(1.1);
@@ -72,7 +76,7 @@ const Card = styled.div`
 `
 
 const ProjectCard = ({ project, style, featured }) => (
-  <Link cover direction="down" bg={"url(" + project.frontmatter.featuredImage.childImageSharp.resize.src + ") center / cover"}
+  <Link
     to={project.fields.slug}
     style={{ textDecoration: `none`, color: "#212121", ...style }}
     className={featured ? "featured" : ""}
