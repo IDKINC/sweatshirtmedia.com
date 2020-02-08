@@ -17,8 +17,16 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
+              title
               tags
               templateKey
+              featuredImage {
+                childImageSharp {
+                  resize(width: 600, height: 600, cropFocus: CENTER) {
+                    src
+                  }
+                }
+              }
             }
           }
         }
@@ -32,17 +40,35 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(edge => {
-      const id = edge.node.id
+    posts.forEach(({node, index}) => {
+      const id = node.id
+      let related = []
+      if(node.frontmatter.templateKey === "project"){
+
+        console.log(posts)
+
+        let filteredPosts = posts.filter(({node: post}) => post.frontmatter.templateKey === node.frontmatter.templateKey && node.id !== post.id)
+        const edgeCount = filteredPosts.length
+        const relatedIndexes = randomNum(0, edgeCount);
+        
+        related = [filteredPosts[relatedIndexes[0]].node,
+        filteredPosts[relatedIndexes[1]].node,
+        filteredPosts[relatedIndexes[2]].node, filteredPosts[relatedIndexes[3]].node,
+        filteredPosts[relatedIndexes[4]].node,
+        filteredPosts[relatedIndexes[5]].node]
+        console.log(related)
+      }
+
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
+        path: node.fields.slug,
+        tags: node.frontmatter.tags,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/${String(node.frontmatter.templateKey)}.js`
         ),
         // additional data can be passed via context
         context: {
           id,
+          related
         },
       })
     })
@@ -80,6 +106,19 @@ function isProjectNode(node) {
   }
 
   return true
+}
+
+function randomNum(min, max, currentIndex = null) {
+  var n = [];
+  var i = 0;
+  while (i < 6) {
+    var num = Math.floor(Math.random() * max) + min;
+    if (num !== currentIndex && n.indexOf(num) === -1) {
+      n.push(num);
+      i++;
+    }
+  }
+  return n;
 }
 
 const descriptors = [

@@ -1,7 +1,12 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import PropTypes from "prop-types"
-import Layout from '../../components/Layout'
+
+import { breakpoints } from "../breakpoints"
+
+
+import styled from "styled-components"
+import Button from '../atoms/Button'
 
 function encode(data) {
     return Object.keys(data)
@@ -37,14 +42,14 @@ export default class ContactForm extends React.Component {
     render() {
         let labels = this.props.labels
         return (
-            <form
+            <Form
                 name="contact"
                 method="post"
                 action="/contact/thanks/"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
-                style={{...this.props.style}}
+                style={{ ...this.props.style }}
             >
                 {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                 <input type="hidden" name="form-name" value="contact" />
@@ -57,7 +62,7 @@ export default class ContactForm extends React.Component {
                 <div className="field">
                     <label className="label" htmlFor={'name'}>
                         {labels.name}
-                  </label>
+                    </label>
                     <div className="control">
                         <input
                             className="input"
@@ -72,7 +77,7 @@ export default class ContactForm extends React.Component {
                 <div className="field">
                     <label className="label" htmlFor={'email'}>
                         {labels.email}
-                  </label>
+                    </label>
                     <div className="control">
                         <input
                             className="input"
@@ -87,7 +92,7 @@ export default class ContactForm extends React.Component {
                 <div className="field">
                     <label className="label" htmlFor={'message'}>
                         {labels.message}
-                  </label>
+                    </label>
                     <div className="control">
                         <textarea
                             className="textarea"
@@ -95,15 +100,14 @@ export default class ContactForm extends React.Component {
                             onChange={this.handleChange}
                             id={'message'}
                             required={true}
+                            minlength={20}
                         />
                     </div>
                 </div>
                 <div className="field">
-                    <button className="button is-link" type="submit">
-                        {labels.submit}
-                  </button>
+                    <Button label={labels.submit} type="submit" />
                 </div>
-            </form>
+            </Form>
         )
     }
 }
@@ -114,5 +118,67 @@ ContactForm.propTypes = {
 }
 
 ContactForm.defaultProps = {
-    labels: {name: "Your Name", email: "Email", message: "Message", submit: "Send Message"},
-  }
+    labels: { name: "Your Name", email: "Email", message: "Message", submit: "Send Message" },
+}
+
+
+
+const Form = styled.form`
+font-size: 1rem;
+
+@media ${breakpoints.laptop} {
+    font-size: 1.5rem;
+
+
+}
+
+label{
+    color: #999;
+}
+
+input, textarea, button{
+    font-size: inherit;
+}
+
+input, textarea{
+
+    width: 100%;
+    font-family: inherit;
+    margin-bottom: 0.5rem;
+
+    border: 0;
+    border-radius: var(--borderRadius);
+    padding: 0.25em 0.5em;
+    transition: 300ms;
+    border: 2px solid #ccc;
+
+    &:focus{
+        border: 2px solid var(--darkerColor);
+    }
+
+    &:valid{
+        border: 2px solid var(--green);
+    }
+}
+
+
+textarea{
+    resize: vertical;
+
+    height: 6em;
+
+
+    @media ${breakpoints.laptop} {
+
+    height: 3em;
+
+
+    &:focus, &:valid{
+        height: 8em;
+    }
+
+}
+}
+
+
+`
