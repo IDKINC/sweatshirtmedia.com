@@ -42,14 +42,13 @@ export const IndexPageTemplate = ({
         <VideoBanner />
 
 
-          <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
-        <div style={{ zIndex: "999", position: "relative" }}>
+        <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
+        <div style={{ zIndex: "999", position: "relative", width: "80%", display: "flex", alignItems: "center", justifyContent: "center", algnItems: "center", flexDirection: "column" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
-      <Button to="/portfolio" label="See Our Work" white/>
-      <Button to="/contact" label="Get In Touch &raquo;"/>
 
-
+            <Button to="/portfolio" label="See Our Work" white />
+            <Button to="/contact" label="Get In Touch &raquo;" />
 
           </BannerNav>
           <SocialIcons />
@@ -67,7 +66,7 @@ export const IndexPageTemplate = ({
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
 
-        <Button to="/portfolio" label="See The Rest Of Our Work &raquo;" size="large" style={{gridColumn:"1 / -1"}}/>
+          <Button to="/portfolio" label="See The Rest Of Our Work &raquo;" size="large" style={{ gridColumn: "1 / -1" }} />
         </Grid>
 
 
@@ -299,6 +298,10 @@ justify-content: center;
 flex-direction: column;
 margin: 2rem 0;
 color: #fff;
+
+a{
+  margin-bottom: 1em;
+}
 
     @media ${breakpoints.laptop} {
       display: grid;
