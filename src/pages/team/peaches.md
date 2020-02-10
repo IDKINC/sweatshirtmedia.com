@@ -1,6 +1,6 @@
 ---
 templateKey: team-member
-name: Peaches
+name: Peach
 jobTitle: Designer
 featuredImage: /img/image+%287%29.jpg
 ---
