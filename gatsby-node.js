@@ -44,9 +44,7 @@ exports.createPages = ({ actions, graphql }) => {
       const id = node.id
       let related = []
       if(node.frontmatter.templateKey === "project"){
-
-        console.log(posts)
-
+        
         let filteredPosts = posts.filter(({node: post}) => post.frontmatter.templateKey === node.frontmatter.templateKey && node.id !== post.id)
         const edgeCount = filteredPosts.length
         const relatedIndexes = randomNum(0, edgeCount);
