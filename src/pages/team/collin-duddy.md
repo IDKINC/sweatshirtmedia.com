@@ -5,4 +5,4 @@ jobTitle: CCO
 featuredImage: /img/collin-duddy.jpg
 weight: 99
 ---
-Collin Duddy
+director. mug designer. horse girl. greek. my kevin bacon number is 4.
