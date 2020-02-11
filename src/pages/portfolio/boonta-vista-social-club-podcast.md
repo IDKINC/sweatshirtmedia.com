@@ -7,4 +7,4 @@ embedYouTube: false
 externalLink: 'http://boontavista.com/'
 type: Design + Illustration
 ---
-
+Design and Illustration done by **[Peach Quintana](https://sweatshirtmedia.com/team/#peach).**
