@@ -23,9 +23,12 @@ class VideoBanner extends React.Component {
 
   componentDidMount = () => {
 
-    let youtubeId = this.getIdFromYouTubeLink(this.props.video)
+    if(this.props.video){
 
-    this.setState({    youtubeId: youtubeId  })
+      let youtubeId = (this.getIdFromYouTubeLink(this.props.video))
+      
+      this.setState({    youtubeId: youtubeId  })
+    }
   }
 
   getIdFromYouTubeLink = (url) => {
