@@ -43,7 +43,7 @@ export const IndexPageTemplate = ({
 
 
         <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
-        <div style={{ zIndex: "999", position: "relative", width: "80%", display: "flex", alignItems: "center", justifyContent: "center", algnItems: "center", flexDirection: "column" }}>
+        <div style={{ zIndex: "999", position: "relative", width: "80%", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
