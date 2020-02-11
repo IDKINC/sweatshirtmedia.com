@@ -171,7 +171,8 @@ export const pageQuery = graphql`
           jobTitle
           featuredImage {
             childImageSharp {
-              resize {
+              fluid(maxWidth: 600) {
+                ...GatsbyImageSharpFluid
                 src
               }
             }
@@ -192,7 +193,7 @@ export const pageQuery = graphql`
           
           featuredImage {
             childImageSharp {
-              resize(width: 600, height: 600, cropFocus: CENTER  ) {
+              resize(width: 600, height: 600, cropFocus: CENTER) {
                 src
               }
             }
@@ -259,32 +260,6 @@ bottom:1rem;
   width: 10%; 
 
   }
-
-`
-
-const MorePortfolio = styled.a`
-
-  verticalAlign: middle; 
-  color: inherit; 
-  font-weight: 100; 
-  margin:0 auto; 
-  background: var(--mainColor); 
-  color: #fff;
-  font-size: 1rem; 
-  width: 100%;
-  grid-column: 1 ;
-
-  
-  @media ${breakpoints.laptop} {
-    width: 80%;
-
-    font-size: 1.5rem;
-  margin:3rem auto 0; 
-    
-  grid-column: 1 / -1;
-
-  }
-
 
 `
 

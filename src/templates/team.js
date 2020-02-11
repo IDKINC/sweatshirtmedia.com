@@ -76,8 +76,8 @@ export const teamPageQuery = graphql`
             jobTitle
             featuredImage {
               childImageSharp {
-                resize(width: 1200) {
-                  src
+                fluid(maxWidth: 600) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from "styled-components"
 
 import { breakpoints } from "./breakpoints"
+import Img from 'gatsby-image'
 
 
 class VideoBanner extends React.Component {
@@ -76,8 +77,8 @@ class VideoBanner extends React.Component {
 
 
           <MainImage>
-            {this.state.mainImage && <img src={!!this.state.mainImage.childImageSharp ? this.state.mainImage.childImageSharp.resize.src : this.state.mainImage.image.childImageSharp.resize.src} />}
-            {this.state.mainImage && <BlurBG src={!!this.state.mainImage.childImageSharp ? this.state.mainImage.childImageSharp.resize.src : this.state.mainImage.image.childImageSharp.resize.src} />}
+            {this.state.mainImage && <Img fluid={this.state.mainImage.childImageSharp.fluid} />}
+            {this.state.mainImage && <BlurBG src={this.state.mainImage.childImageSharp.fluid} />}
 
             <GalleryControls onClickPrev={() => this.updateMainImage(this.state.selectedIndex - 1)} onClickNext={() => this.updateMainImage(this.state.selectedIndex + 1)}
               onClickZoom={this.zoomToggle} selected={this.state.selectedIndex} min={0} max={this.state.pictures.length - 1} zoomState={this.state.zoom} />
@@ -113,12 +114,13 @@ export default VideoBanner
 
 const GridImageSelector = ({ image, onClick, selected = false }) => (
 
-  <img
-    onClick={onClick}
-    src={!!image.childImageSharp ? image.childImageSharp.resize.src : image.image.childImageSharp.resize.src}
+  <div onClick={onClick}>
+  <Img
+    fluid={image.childImageSharp.fluid}
     className={selected ? "selected" : ""}
 
   />
+  </div>
 
 
 )
@@ -160,12 +162,19 @@ position: relative;
 background: rgba(33,33,33,0.5);
 overflow: hidden;
 
-img {
+.gatsby-image-wrapper {
   object-fit: contain;
 
   box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
   height: 100%; 
+  width: 100%;
 
+img{
+  object-fit: contain!important;
+  height: 100%; 
+  width: auto;
+  
+  }
 }
 `
 
@@ -341,6 +350,9 @@ img{
   &:hover{
     border: 1px solid #333;
   }
+
+}
+.gatsby-image-wrapper{
 
   &.selected{
     border: 2px solid var(--mainColor);

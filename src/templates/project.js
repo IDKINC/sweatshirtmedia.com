@@ -90,8 +90,9 @@ const SingleProject = props => {
   let galleryArray = []
 
   if (project.frontmatter.featuredImage) { galleryArray.push(project.frontmatter.featuredImage) }
-  if (project.frontmatter.images) { galleryArray.push(...project.frontmatter.images) }
+  if (project.frontmatter.images) { galleryArray.push(...project.frontmatter.images.map((image) => image.image)) }
 
+  console.log(galleryArray);
   return (
     <Layout>
       <SEO title={project.frontmatter.title + " - " + project.fields.type + " " + (project.fields.clients.length ? "for " + project.fields.clients : "")} />
@@ -147,6 +148,10 @@ export const postQuery = graphql`
         images {
           image {
             childImageSharp {
+              fluid(maxWidth: 1200) {
+                ...GatsbyImageSharpFluid
+                src
+              }
               resize(width: 1200) {
                 src
               }
@@ -155,6 +160,10 @@ export const postQuery = graphql`
         }
         featuredImage {
           childImageSharp {
+            fluid(maxWidth: 1200) {
+              ...GatsbyImageSharpFluid
+              src
+            }
             resize(width: 1200) {
               src
             }

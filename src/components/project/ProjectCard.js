@@ -1,6 +1,8 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
+import Img from "gatsby-image";
+
 import styled from "styled-components"
 
 import React from "react"
@@ -60,6 +62,10 @@ const Card = styled.div`
   min-width: 100%;
   height: 100%;
 
+.gatsby-image-wrapper{
+  width: 100%;
+  transition: 300ms;
+}
 
   &:hover{
 
@@ -67,6 +73,7 @@ const Card = styled.div`
       color: var(--mainColor);
     }
 
+    
     ${ImgWrapper}{
       img{
         transform: scale(1.1);
