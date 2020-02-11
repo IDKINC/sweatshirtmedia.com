@@ -64,7 +64,7 @@ export const portfolioPageQuery = graphql`
         title
       }
     }
-    projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 1000) {
+    projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 1000, sort: {fields: fields___weight, order: DESC}) {
       edges {
         node {
           frontmatter {
@@ -72,9 +72,9 @@ export const portfolioPageQuery = graphql`
             
             featuredImage {
               childImageSharp {
-              resize(width: 600, height: 600, cropFocus: CENTER  ) {
-                src
-              }
+                resize(width: 600, height: 600, cropFocus: CENTER) {
+                  src
+                }
             }
             }
           }

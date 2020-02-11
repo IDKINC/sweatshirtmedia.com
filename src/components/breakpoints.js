@@ -1,4 +1,5 @@
 const size = {
+  mobileOnly: "320px",
   mobileS: "320px",
   mobileM: "375px",
   mobileL: "425px",
@@ -9,6 +10,7 @@ const size = {
 }
 
 export const breakpoints = {
+  mobileOnly: `(min-width: ${size.mobileOnly})`,
   mobileS: `(min-width: ${size.mobileS})`,
   mobileM: `(min-width: ${size.mobileM})`,
   mobileL: `(min-width: ${size.mobileL})`,
