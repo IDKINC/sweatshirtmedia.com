@@ -8,13 +8,16 @@ const StyledGrid = styled.div`
   padding: 0.5em;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(${props => (props.col ? props.col/2 : 2)}, 1fr);
-  grid-gap: 2rem;
+  grid-template-columns: repeat(${props => (props.col ? Math.round(props.col/2): 2)}, 1fr);
   align-items: stretch;
   grid-auto-flow: dense;
-
+  grid-gap: 1rem;
+  
   @media ${breakpoints.laptop} {
+  grid-gap: 4rem;
+
     grid-template-columns: repeat(${props => (props.col ? props.col : 5)}, 1fr);
+    max-width: 1380px;
   }
 
 

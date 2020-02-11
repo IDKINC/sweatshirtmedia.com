@@ -8,22 +8,30 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   return graphql(`
-    {
-      allMarkdownRemark(limit: 1000) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              tags
-              templateKey
+  {
+    allMarkdownRemark(limit: 1000, filter: {internal: {}, frontmatter: {templateKey: {ne: "team-member"}}}) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+            templateKey
+            featuredImage {
+              childImageSharp {
+                resize(width: 600, height: 600, cropFocus: CENTER) {
+                  src
+                }
+              }
             }
           }
         }
       }
     }
+  }
   `).then(result => {
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString()))
@@ -32,17 +40,32 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(edge => {
-      const id = edge.node.id
+    posts.forEach(({node, index}) => {
+      const id = node.id
+      let related = []
+      if(node.frontmatter.templateKey === "project"){
+        
+        let filteredPosts = posts.filter(({node: post}) => post.frontmatter.templateKey === node.frontmatter.templateKey && node.id !== post.id)
+        const edgeCount = filteredPosts.length
+        const relatedIndexes = randomNum(0, edgeCount);
+        
+        related = [filteredPosts[relatedIndexes[0]].node,
+        filteredPosts[relatedIndexes[1]].node,
+        filteredPosts[relatedIndexes[2]].node, filteredPosts[relatedIndexes[3]].node,
+        filteredPosts[relatedIndexes[4]].node,
+        filteredPosts[relatedIndexes[5]].node]
+      }
+
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
+        path: node.fields.slug,
+        tags: node.frontmatter.tags,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/${String(node.frontmatter.templateKey)}.js`
         ),
         // additional data can be passed via context
         context: {
           id,
+          related
         },
       })
     })
@@ -82,6 +105,19 @@ function isProjectNode(node) {
   return true
 }
 
+function randomNum(min, max, currentIndex = null) {
+  var n = [];
+  var i = 0;
+  while (i < 6) {
+    var num = Math.floor(Math.random() * max) + min;
+    if (num !== currentIndex && n.indexOf(num) === -1) {
+      n.push(num);
+      i++;
+    }
+  }
+  return n;
+}
+
 const descriptors = [
   {
     predicate: isProjectNode,
@@ -100,6 +136,11 @@ const descriptors = [
         name: "youtubeLink",
         getter: node => node.frontmatter.youtubeLink,
         defaultValue: "",
+      },
+      {
+        name: "embedYouTube",
+        getter: node => node.frontmatter.embedYouTube,
+        defaultValue: true,
       },
       {
         name: "externalLink",

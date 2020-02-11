@@ -49,13 +49,13 @@ class VideoBanner extends React.Component {
   render = () => {
     return (
       <VideoContainer>
-        <video ref="vidRef" loop muted preload="none" poster={BannerCover} 
+        <video ref="vidRef" loop muted playsInline preload="none" poster={BannerCover} 
         style={{ 
           
         filter: "grayscale(1)",
         width: "100%", 
         height: "100%", 
-        objectFit: "cover", zIndex: 1 }}>
+        objectFit: "cover" }}>
           <source src={BannerVideoMP4} type="video/mp4" />
           <source src={BannerVideoWEBM} type="video/webm" />
         </video>
@@ -86,8 +86,7 @@ right: 0;
 bottom: 0;
 width: 100%;
 height: 100%;
-z-index: 999;
-transform: translateZ(1px);
+z-index: 1;
 `
 
 
@@ -98,7 +97,6 @@ bottom: 1em;
 left: 1em;
 color: #fff;
 transition: 300ms;
-z-index: 2;
 
 
 

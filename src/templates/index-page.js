@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
 import logo from '../img/logo.svg'
 
@@ -18,9 +18,12 @@ import SocialIcons from '../components/SocialIcons'
 
 import VideoBanner from '../components/VideoBanner'
 
+import { Container } from '../components/atoms/Container'
+
 import BannerCover from "../img/videobg.jpg"
 
 import SweatshirtIcon from "../img/sweatshirt-icon.svg"
+import Button from '../components/atoms/Button'
 
 
 
@@ -39,15 +42,13 @@ export const IndexPageTemplate = ({
         <VideoBanner />
 
 
-          <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
-        <div style={{ zIndex: "999", position: "relative" }}>
+        <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
+        <div style={{ zIndex: "999", position: "relative", width: "80%", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
-            <Link to="/portfolio">See Our Work</Link>
-            <Link to="/contact">Get In Touch &raquo;</Link>
-
-
+            <Button to="/portfolio" label="See Our Work" white />
+            <Button to="/contact" label="Get In Touch &raquo;" />
 
           </BannerNav>
           <SocialIcons />
@@ -58,13 +59,16 @@ export const IndexPageTemplate = ({
       </Container>
 
       <Container>
-        <h1>We Are Makers. <Link to="/portfolio" style={{ fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100 }}>See&nbsp;Our&nbsp;Work&nbsp;&raquo;</Link></h1>
+        <h1><Link to="/portfolio">We Are Makers.</Link></h1>
         <Grid col={3}>
           {projects.map(({ node: project }, i) => (
             <ProjectCard project={project} />
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
+
+          <Button to="/portfolio" label="See The Rest Of Our Work &raquo;" size="large" style={{ gridColumn: "1 / -1" }} />
         </Grid>
+
 
 
       </Container>
@@ -72,7 +76,7 @@ export const IndexPageTemplate = ({
       <Container style={{
         minHeight: '80vh', backgroundImage: `url(${
           !!storyTeller.childImageSharp ? storyTeller.childImageSharp.fluid.src : storyTeller
-          })`, backgroundSize: "cover", backgroundPosition: "center center", backgroundAttachment: "fixed"
+          })`, backgroundPosition: "center center", backgroundAttachment: "fixed"
       }}>
         <h1 style={{ color: "#fff", width: "100%", textShadow: "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)" }}>We Are Storytellers.</h1>
         <Grid col={3} style={{ background: "transparent", width: "80%" }}>
@@ -100,7 +104,7 @@ export const IndexPageTemplate = ({
 
 
       <Container>
-        <h1>This Is Who We Are.</h1>
+        <h1><Link to="/team">Get To Know Us.</Link></h1>
         <Grid>
           {team.map(({ node: member }) => (
             <TeamCard person={member} />
@@ -151,7 +155,7 @@ export const pageQuery = graphql`
       portfolioHeader
     }
   }
-  storyTeller: file(relativePath: {eq: "storytellers.jpg"}) {
+  storyTeller: file(relativePath: {eq: "what-the-hex-dark.png"}) {
     childImageSharp {
       fluid(maxWidth: 2400) {
         ...GatsbyImageSharpFluid
@@ -167,7 +171,8 @@ export const pageQuery = graphql`
           jobTitle
           featuredImage {
             childImageSharp {
-              resize {
+              fluid(maxWidth: 600) {
+                ...GatsbyImageSharpFluid
                 src
               }
             }
@@ -188,7 +193,7 @@ export const pageQuery = graphql`
           
           featuredImage {
             childImageSharp {
-              resize(width: 1200, height: 672, cropFocus: CENTER  ) {
+              resize(width: 600, height: 600, cropFocus: CENTER) {
                 src
               }
             }
@@ -208,35 +213,29 @@ export const pageQuery = graphql`
 
 
 
-const Container = styled.section`
-  width: 100%;
-  min-height: 20vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 5vh 1vh;
-  background: #fff;
 
-  & > h1{
-    text-align: center;
-
-    
-  @media ${breakpoints.laptop} {
-    font-size: 5em;
-    }
-  }
-`
 const SkillsCard = styled.div`
 background: #fff;
 padding: 1rem;
 transition: 100ms;
-box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
+box-shadow: var(--boxShadow);
+border-radius: var(--borderRadius);
+
+display: flex;
+align-items: center;
+justify-content: center;
 
 h4{
   margin: 0;
   text-align: center;
+
+
+  font-size: 0.8em;
+
+  @media ${breakpoints.laptop} {
+    font-size: inherit;
+
+  } 
 }
 
 &:hover{
@@ -264,54 +263,6 @@ bottom:1rem;
 
 `
 
-const Form = styled.form`
-margin: 1em auto;
-font-size: 1.5rem;
-width: 100%;
-
-@media ${breakpoints.laptop} {
-  width: 75%;
-  }
-
-
-input{
-  width: 100%;
-  font-size: 1em;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  padding: 0.25em;
-  margin-bottom: 1em;
-
-}
-
-textarea{
-  width: 100%;
-  font-size: 1em;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  padding: 0.25em;
-  min-height: 5ch;
-  resize: vertical;
-  margin-bottom: 1em;
-
-}
-
-
-button[type=submit]{
-  width: 100%;
-  text-align: center;
-  font-size: 1em;
-  border: 2px solid #fff; 
-  color: #fff;
-  background: transparent; 
-  padding: 0.5em;
-}
-
-`
-
-
 
 const BannerNav = styled.nav`
 
@@ -323,6 +274,10 @@ flex-direction: column;
 margin: 2rem 0;
 color: #fff;
 
+a{
+  margin-bottom: 1em;
+}
+
     @media ${breakpoints.laptop} {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -332,42 +287,6 @@ color: #fff;
 
     }
 
-  a{ 
-    color: inherit;
-    text-decoration: none;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: 1px solid #fff;
-    width: 100%;
-    text-align: center;
-    transition: 100ms;
-    margin-bottom: 1em;
-    &:hover{
-      background: rgba(255,255,255,0.2);
-    }
-
-
-    @media ${breakpoints.laptop} {
-      
-      margin-bottom: 0;
-
-    }
-
-
-    &:last-of-type{
-      background: var(--mainColor);
-      font-weight: 900;
-      border: 1px solid var(--darkerColor);
-      margin-bottom: 0;
-
-      &:hover{
-        background: var(--darkerColor);
-      }
-    }
-    
-    
-
-}
 `
 
 
