@@ -8,4 +8,4 @@ youtubeLink: 'https://www.youtube.com/watch?v=WP-QwNOjlCE'
 embedYouTube: false
 type: Music Video
 ---
-Co-directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)** and **Michael Weybret**
+Co-directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)** and Michael Weybret
