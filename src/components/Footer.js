@@ -9,6 +9,7 @@ import { breakpoints } from "./breakpoints"
 import logo from '../img/logo.svg'
 import waves from '../img/waves.svg'
 import ContactForm from './contact/contactForm'
+import Button from './atoms/Button'
 
 
 
@@ -21,10 +22,10 @@ const Footer = class extends React.Component {
         {this.props.cta && <FooterCTA>
 
           <div>
-            <h2>Like What You See? Let's Talk</h2>
+            <h2>Like What You See?</h2>
           </div>
+          <Button to="/contact" label="Let's Talk »" size="large" white style={{width: "auto"}}/>
 
-          <ContactForm />
         </FooterCTA>}
 
         <StyledFooter>
@@ -87,17 +88,10 @@ a.button{
 
 @media ${breakpoints.laptop} {
   
-  display: grid;
-grid-template-columns: 1fr 1fr;
+  
 padding: 3rem;
-grid-gap: 3rem;
-
-
-
-& > div {
-  margin-left: auto;
-  text-align: right;
-}
+flex-direction: row;
+display: flex;
 
 a.button{
   width: 50%;

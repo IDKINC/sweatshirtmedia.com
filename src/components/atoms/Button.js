@@ -13,7 +13,7 @@ border-radius: var(--borderRadius);
 width: 100%;
 text-align: center;
 transition: 100ms;
-margin-bottom: 1em;
+// margin-bottom: 1em;
 color: #fff;
 background: var(--mainColor);
 
@@ -48,6 +48,8 @@ background: var(--mainColor);
 
   @media ${breakpoints.laptop} {
     font-size: 1.5em;
+    padding: 0.5rem 2rem;
+
   }
 }
 `
@@ -62,7 +64,7 @@ border-radius: var(--borderRadius);
 width: 100%;
 text-align: center;
 transition: 100ms;
-margin-bottom: 1em;
+// margin-bottom: 1em;
 color: #fff;
 background: var(--mainColor);
 border: none;
@@ -100,6 +102,8 @@ cursor: pointer;
 
   @media ${breakpoints.laptop} {
     font-size: 1.5em;
+    padding: 0.5rem 2rem;
+
   }
 }
 `

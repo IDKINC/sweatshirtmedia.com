@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
-name: Peaches
+name: Peach
 jobTitle: Designer
-featuredImage: /img/image+%287%29.jpg
+featuredImage: /img/peaches.jpg
 ---
-
+Artist + Producer // The boy who does it all and absolutely nothing.

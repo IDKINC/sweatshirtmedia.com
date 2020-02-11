@@ -52,7 +52,7 @@ const ImgWrapper = styled.div`
 
 const Card = styled.div`
   background: #fff;
-  // padding: 0.5em;
+  padding: 1em;
   display: flex;
   align-items: center;
   justify-content: stretch;

@@ -28,11 +28,11 @@ const Navbar = class extends React.Component {
         // set the class in state for the navbar accordingly
         this.state.active
           ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
+            navBarActiveClass: 'is-active',
+          })
           : this.setState({
-              navBarActiveClass: '',
-            })
+            navBarActiveClass: '',
+          })
       }
     )
   }
@@ -46,7 +46,7 @@ const Navbar = class extends React.Component {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link cover bg="#A29BFE" to="/" className="navbar-item" title="Logo">
+            <Link to="/" className="navbar-item" title="Logo">
               <Logo src={logo} alt="Sweatshirt" />
             </Link>
             {/* Hamburger menu */}
@@ -65,16 +65,16 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start has-text-centered">
-              <Link cover bg="#A29BFE" className="navbar-item" to="/portfolio">
+              <Link className="navbar-item" to="/portfolio">
                 Portfolio
               </Link>
-              <Link cover bg="#A29BFE" className="navbar-item" to="/team">
+              <Link className="navbar-item" to="/team">
                 Team
               </Link>
-              <Link cover bg="#A29BFE" className="navbar-item" to="/about">
+              <Link className="navbar-item" to="/about">
                 About
               </Link>
-              <Link cover bg="#A29BFE" className="navbar-item" to="/contact">
+              <Link className="navbar-item" to="/contact">
                 Contact
               </Link>
             </div>
@@ -92,11 +92,11 @@ const Logo = styled.img`
 
 width: 50vw;
 filter: invert(1);
+max-height: 100%!important;
 
 @media ${breakpoints.laptop} {
 
   width: 20vw;
-
 }
 
 
