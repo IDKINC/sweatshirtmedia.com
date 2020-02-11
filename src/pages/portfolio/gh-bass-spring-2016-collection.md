@@ -8,4 +8,4 @@ youtubeLink: 'https://www.youtube.com/watch?v=iFLa-zFkGtQ&feature=emb_logo'
 embedYouTube: false
 type: Commercial
 ---
-Shot, Edited, and Directed by **Collin Duddy**
+Shot, Edited, and Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**
