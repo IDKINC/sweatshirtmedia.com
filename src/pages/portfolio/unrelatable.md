@@ -8,4 +8,4 @@ type: Branding + Audio Production
 ---
 Abdul Dremali and **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)** are complete opposites trying to find some common ground.
 
-Audio Production done by **[Peach Quintana](https://sweatshirtmedia.com/team/#peach)**.
+Branding and Audio Production done by **[Peach Quintana](https://sweatshirtmedia.com/team/#peach)**.
