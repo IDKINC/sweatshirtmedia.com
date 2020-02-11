@@ -78,7 +78,7 @@ class VideoBanner extends React.Component {
 
           <MainImage>
             {this.state.mainImage && <Img fluid={this.state.mainImage.childImageSharp.fluid} />}
-            {this.state.mainImage && <BlurBG src={this.state.mainImage.childImageSharp.fluid} />}
+            {this.state.mainImage && <BlurBG src={this.state.mainImage.childImageSharp.resize.src} />}
 
             <GalleryControls onClickPrev={() => this.updateMainImage(this.state.selectedIndex - 1)} onClickNext={() => this.updateMainImage(this.state.selectedIndex + 1)}
               onClickZoom={this.zoomToggle} selected={this.state.selectedIndex} min={0} max={this.state.pictures.length - 1} zoomState={this.state.zoom} />
@@ -165,10 +165,11 @@ overflow: hidden;
 .gatsby-image-wrapper {
   object-fit: contain;
 
-  box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
   height: 100%; 
   width: 100%;
 
+  filter: box-shadow( 0 3px 6px -2px rgba(0,0,0,0.4));
+  z-index: 2;
 img{
   object-fit: contain!important;
   height: 100%; 
@@ -284,7 +285,7 @@ grid-template-columns: 1fr 3fr 1fr;
 align-items: center;
 opacity: 0.1;
 transition: 300ms;
-
+z-index: 3;
 &:hover{
   opacity: 1;
 }
@@ -323,7 +324,7 @@ const BlurBG = styled.img`
 filter: blur(4px);
 width: 100%!important;
 height: 100% !important;
-z-index: -1;
+z-index: 1;
 object-fit: cover!important;
 position: absolute; 
 top: 50%;
