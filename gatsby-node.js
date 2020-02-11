@@ -8,23 +8,22 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   return graphql(`
-    {
-      allMarkdownRemark(limit: 1000) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              tags
-              templateKey
-              featuredImage {
-                childImageSharp {
-                  resize(width: 600, height: 600, cropFocus: CENTER) {
-                    src
-                  }
+  {
+    allMarkdownRemark(limit: 1000, filter: {internal: {}, frontmatter: {templateKey: {ne: "team-member"}}}) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+            templateKey
+            featuredImage {
+              childImageSharp {
+                resize(width: 600, height: 600, cropFocus: CENTER) {
+                  src
                 }
               }
             }
@@ -32,6 +31,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
+  }
   `).then(result => {
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString()))
