@@ -2,7 +2,8 @@
 templateKey: project
 title: Tunnel Vision Tattoo
 featuredImage: /img/Tunnel Vision.png
+embedYouTube: false
 externalLink: 'https://tunnelvisiontattoo.com/'
 type: Website Development
 ---
-WEBSITE DESIGN DONE BY **JAY HUFFMAN**
+Website design and development done by **[Jay Huffman](https://sweatshirtmedia.com/team/#jay)**
