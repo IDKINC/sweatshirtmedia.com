@@ -5,6 +5,7 @@ featuredImage: /img/Off.png
 clients:
   - O-Town
 youtubeLink: 'https://www.youtube.com/watch?v=tSFAkyi9I1E&feature=youtu.be'
+embedYouTube: false
 type: Music Video
 ---
-DIRECTED BY **COLLIN DUDDY**
+Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**
