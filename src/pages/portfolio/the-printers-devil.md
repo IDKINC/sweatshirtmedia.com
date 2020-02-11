@@ -6,4 +6,4 @@ youtubeLink: 'https://www.youtube.com/watch?v=-PCqCfMlymg&feature=emb_logo'
 embedYouTube: false
 type: Documentary Trailer
 ---
-Co-directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)** and **Michael Weybret**
+Co-directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)** and Michael Weybret
