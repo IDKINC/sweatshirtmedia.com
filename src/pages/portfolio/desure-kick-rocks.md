@@ -8,4 +8,4 @@ youtubeLink: 'https://www.youtube.com/watch?v=FXVeQQmINJ4'
 embedYouTube: false
 type: Music Video
 ---
-Directed by **Collin Duddy**
+Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**
