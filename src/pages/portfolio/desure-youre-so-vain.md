@@ -6,6 +6,7 @@ clients:
   - Desure
 weight: 999
 youtubeLink: 'https://www.youtube.com/watch?v=g469DxOxZjo'
+embedYouTube: false
 type: Music Video
 ---
-DIRECTED BY **COLLIN DUDDY**
+Directed By **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**

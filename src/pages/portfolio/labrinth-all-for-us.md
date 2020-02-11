@@ -6,6 +6,7 @@ clients:
   - Labrinth
 weight: 995
 youtubeLink: 'https://www.youtube.com/watch?v=WcF60CKr5m4'
+embedYouTube: false
 type: Music Video Art Direction
 ---
-ART DIRECTION DONE BY **PEACH QUINTANA**
+Art Direction done by **[Peach Quintana](https://sweatshirtmedia.com/team#peach)**

@@ -3,8 +3,9 @@ templateKey: project
 title: Way Down South Apparel
 featuredImage: /img/Thunder Spikes Social Avatar.jpg
 weight: 996
+embedYouTube: false
 externalLink: 'https://www.waydownsouthco.com/'
-type: Design + Marketing Strategy
+type: Storefront + Design
 images:
   - image: /img/Way Down South.png
   - image: /img/King Peach Tattoo Sticker.jpg
@@ -20,4 +21,4 @@ images:
   - image: /img/00100lPORTRAIT_00100_BURST20190810133333558_COVER.jpg
   - image: /img/Thunder Spikes Social Avatar.jpg
 ---
-Way Down South is an online store focused on Atlanta soccer inspired designs. Store front created and all designs done by **JOSE HADATHY**
+Way Down South is an online store focused on Atlanta soccer inspired designs. Storefront created and all designs done by **[Jose Hadathy](https://sweatshirtmedia.com/team/#jose)**.

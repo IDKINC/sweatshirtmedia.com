@@ -5,6 +5,7 @@ featuredImage: /img/Burn Out Rialto.png
 clients:
   - Midland
 youtubeLink: 'https://www.youtube.com/watch?v=KwYDJdiw7CY'
+embedYouTube: false
 type: Music Video
 ---
-DIRECTED BY **COLLIN DUDDY**
+Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**
