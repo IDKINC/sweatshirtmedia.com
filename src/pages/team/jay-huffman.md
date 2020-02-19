@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
 name: Jay
-jobTitle: CEO
+jobTitle: 'Cofounder, CEO'
 featuredImage: /img/jay-huffman.jpg
 weight: 100
 quote: 'And now, let the wild rumpus start.'
