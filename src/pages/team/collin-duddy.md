@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
 name: Collin
-jobTitle: CCO
+jobTitle: 'Cofounder, CCO'
 featuredImage: /img/collin-duddy.jpg
 weight: 99
 ---
