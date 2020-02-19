@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
 name: Jack
-jobTitle: Developer
+jobTitle: Lead Developer
 featuredImage: /img/jack-harner.jpg
 quote: It's Always DNS
 ---
