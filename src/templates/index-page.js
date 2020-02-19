@@ -87,7 +87,7 @@ export const IndexPageTemplate = ({
             <h4>Video Production</h4>
           </SkillsCard>
           <SkillsCard>
-            <h4>Audio Production</h4>
+            <h4>Photography</h4>
           </SkillsCard>
           <SkillsCard>
             <h4>Art Direction</h4>
@@ -105,7 +105,7 @@ export const IndexPageTemplate = ({
 
       <Container>
         <h1><Link to="/team">Get To Know Us.</Link></h1>
-        <Grid>
+        <Grid col={4}>
           {team.map(({ node: member }) => (
             <TeamCard person={member} />
           ))}
@@ -162,7 +162,7 @@ export const pageQuery = graphql`
       }
     }
   }
-  team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 6, sort: {fields: fields___weight, order: DESC}) {
+  team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 1000, sort: {fields: fields___weight, order: DESC}) {
     edges {
       node {
         id
@@ -171,7 +171,7 @@ export const pageQuery = graphql`
           jobTitle
           featuredImage {
             childImageSharp {
-              fluid(maxWidth: 600) {
+              fluid(maxWidth: 600, maxHeight: 800, cropFocus: CENTER) {
                 ...GatsbyImageSharpFluid
                 src
               }

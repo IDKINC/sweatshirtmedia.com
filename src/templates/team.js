@@ -60,39 +60,42 @@ TeamPage.propTypes = {
 export default TeamPage
 
 export const teamPageQuery = graphql`
-  query TeamPage($id: String!) {
-    page: markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-      }
-    }
-    team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 1000, sort: {fields: fields___weight, order: DESC}) {
-      edges {
-        node {
-          html
-          frontmatter {
-            name
-            jobTitle
-            featuredImage {
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          fields {
-            slug
-            teamID
-            quote
-          }
-
-        }
-      }
-    }
-  }
-`
+         query TeamPage($id: String!) {
+           page: markdownRemark(id: { eq: $id }) {
+             html
+             frontmatter {
+               title
+             }
+           }
+           team: allMarkdownRemark(
+             filter: { frontmatter: { templateKey: { eq: "team-member" } } }
+             limit: 1000
+             sort: { fields: fields___weight, order: DESC }
+           ) {
+             edges {
+               node {
+                 html
+                 frontmatter {
+                   name
+                   jobTitle
+                   featuredImage {
+                     childImageSharp {
+                       fluid(maxWidth: 600, maxHeight: 800, cropFocus: CENTER) {
+                         ...GatsbyImageSharpFluid
+                       }
+                     }
+                   }
+                 }
+                 fields {
+                   slug
+                   teamID
+                   quote
+                 }
+               }
+             }
+           }
+         }
+       `;
 
 
 

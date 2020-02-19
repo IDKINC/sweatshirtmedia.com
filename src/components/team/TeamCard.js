@@ -61,6 +61,7 @@ const Card = styled.div`
 const Bio = styled.div`
   width: 80%;
   margin: 0 auto;
+  text-align: center;
   p {
     font-size: 0.8rem;
   }
