@@ -78,6 +78,11 @@ export const teamPageQuery = graphql`
                  frontmatter {
                    name
                    jobTitle
+                   links{
+                     twitter
+                     instagram
+                     website
+                   }
                    featuredImage {
                      childImageSharp {
                        fluid(maxWidth: 600, maxHeight: 800, cropFocus: CENTER) {
