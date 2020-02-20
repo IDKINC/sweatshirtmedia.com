@@ -6,6 +6,7 @@ clients:
   - Midland
 weight: 997
 youtubeLink: 'https://www.youtube.com/watch?v=T4bvrywf0xg'
+embedYouTube: false
 type: Music Video
 ---
-CO-DIRECTED BY **CAMERON DUDDY** AND **COLLIN DUDDY**
+Co-directed by **Cameron Duddy** and **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**

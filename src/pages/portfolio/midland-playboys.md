@@ -5,6 +5,7 @@ featuredImage: /img/Playboys.png
 clients:
   - Midland
 youtubeLink: 'https://www.youtube.com/watch?v=sbbNuvEDDJM'
+embedYouTube: false
 type: Music Video
 ---
-DIRECTED BY **COLLIN DUDDY**
+Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**

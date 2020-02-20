@@ -6,6 +6,7 @@ import styled from "styled-components";
 import React from "react";
 import Img from "gatsby-image";
 import { breakpoints } from "../breakpoints";
+import SocialLinks from "./SocialLinks";
 
 const Card = styled.div`
   background: #fff;
@@ -17,7 +18,7 @@ const Card = styled.div`
   min-width: 100%;
   width: 100%;
 
-  & > a{
+  & > a {
     width: 100%;
   }
 
@@ -48,6 +49,7 @@ const Card = styled.div`
   .flipped {
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: dense;
+    text-align: right;
 
     @media ${breakpoints.laptop} {
       grid-template-columns: 2fr 1fr;
@@ -59,17 +61,19 @@ const Card = styled.div`
 `;
 
 const Bio = styled.div`
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0.25em auto;
   p {
     font-size: 0.8rem;
+    margin-bottom: 0;
   }
 
   @media ${breakpoints.laptop} {
+    width: 100%;
+
     p {
       font-size: 1rem;
     }
-    width: 70%;
   }
 `;
 
@@ -88,7 +92,6 @@ const Meta = styled.div`
   h4,
   h5 {
     margin: 0;
-    text-align: center;
   }
 
   h4 {
@@ -109,34 +112,43 @@ const Meta = styled.div`
       text-align: right;
     }
   }
+`;
 
-  &.full {
-    grid-template-columns: 1fr;
-    align-items: center;
+const FullMeta = styled.div`
+  grid-template-columns: 1fr;
+  align-items: center;
 
-    h4,
-    h5 {
-      text-align: center;
-      &.quote {
-        font-size: 1rem;
-        font-style: italic;
-      }
+  h4,
+  h5 {
+    text-align: inherit;
+    margin: 0;
+
+  }
+
+  h4 {
+    font-weight: 900;
+    color: var(--mainColor);
+    font-size: 1.5rem;
+    margin: 0.5em 0;
+
+    @media ${breakpoints.laptop} {
+      font-size: 4rem;
     }
+  }
 
-    h4 {
-      font-weight: 900;
-      color: var(--mainColor);
+  h5 {
+    font-size: 1rem;
+
+    &.quote {
+      font-size: 0.8rem;
+      margin: 0.5em 0;
+      font-style: italic;
+    }
+    @media ${breakpoints.laptop} {
       font-size: 1.5rem;
 
-      @media ${breakpoints.laptop} {
-        font-size: 4rem;
-      }
-    }
-
-    h5 {
-      font-size: 1rem;
-      @media ${breakpoints.laptop} {
-        font-size: 2rem;
+      &.quote {
+        font-size: 1rem;
       }
     }
   }
@@ -154,12 +166,11 @@ const TeamCard = ({ person, full, flipped }) => (
 
 const FullCard = ({ person, flipped }) => (
   <div
-    to={"/team#" + person.fields.teamID}
     style={{ textDecoration: `none`, color: "#212121" }}
     className={"full " + (flipped ? "flipped" : "")}
   >
     <Img fluid={person.frontmatter.featuredImage.childImageSharp.fluid} />
-    <Meta className="full">
+    <FullMeta >
       <h4>{person.frontmatter.name}</h4>
       <h5>{person.frontmatter.jobTitle}</h5>
       {person.fields.quote ? (
@@ -172,7 +183,14 @@ const FullCard = ({ person, flipped }) => (
       ) : (
         ""
       )}
-    </Meta>
+      {person.frontmatter.links && (
+        <SocialLinks
+          twitter={person.frontmatter.links.twitter}
+          instagram={person.frontmatter.links.instagram}
+          website={person.frontmatter.links.website}
+        />
+      )}
+    </FullMeta>
   </div>
 );
 

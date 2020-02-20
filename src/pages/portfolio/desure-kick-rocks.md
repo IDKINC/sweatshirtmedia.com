@@ -5,6 +5,7 @@ featuredImage: /img/Kick Rocks.png
 clients:
   - Desure
 youtubeLink: 'https://www.youtube.com/watch?v=FXVeQQmINJ4'
+embedYouTube: false
 type: Music Video
 ---
-DIRECTED BY **COLLIN DUDDY**
+Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**

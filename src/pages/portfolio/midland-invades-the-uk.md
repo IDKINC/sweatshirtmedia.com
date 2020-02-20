@@ -5,6 +5,7 @@ featuredImage: /img/Midland Invades The UK.png
 clients:
   - Midland
 youtubeLink: 'https://www.youtube.com/watch?v=LRkN5qvLjxs&t=72s'
+embedYouTube: false
 type: Tour Video
 ---
-DIRECTED BY **COLLIN DUDDY**
+Directed by **[Collin Duddy](https://sweatshirtmedia.com/team/#collin)**

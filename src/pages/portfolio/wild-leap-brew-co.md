@@ -3,6 +3,7 @@ templateKey: project
 title: Wild Leap Brew Co.
 featuredImage: /img/Wild Leap Brew Co.png
 weight: 998
+embedYouTube: false
 externalLink: 'https://www.wildleap.com/'
 type: Packaging + Apparel Design
 images:
@@ -23,6 +24,6 @@ images:
   - image: /img/WL-Vacanza+1.jpg
   - image: /img/WL-Vacanza+2.jpg
 ---
-**JOSE HADATHY** + HIS DESIGN PARTNER **NEIL CHOPRA** HAVE HANDLED THE ART DIRECTION AND DESIGN FOR WILD LEAP BREW CO. IN LAGRANGE, GA.
+**[Jose Hadathy](https://sweatshirtmedia.com/team/#jose)** and his design partner Neil Chopra led the art direction and design for Wild Leap Brew Co. located in Lagrange, Ga.
 
-TOGETHER THEY HAVE PRODUCED THE PACKAGING FOR THE BEER LABELS, APPAREL AND THE WILD LEAP VODKA BRAND PACKAGING.
+Together they have produced the packaging for the beer labels, apparel and the Wild Leap Vodka brand packaging.
