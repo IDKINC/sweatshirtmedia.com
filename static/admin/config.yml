@@ -8,6 +8,8 @@ backend:
     uploadMedia: "[skip ci] Upload “{{path}}”"
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
+local_backend: true
+
 media_folder: static/img
 public_folder: /img
 display_url: https://sweatshirt.netlify.com
@@ -57,6 +59,29 @@ collections:
           required: false,
           hint: "Controls the Order. Higher Numbers Show Up First",
         }
+      - {
+              label: Links,
+              name: links,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Twitter,
+                    name: twitter,
+                    widget: string,
+                  },
+                  {
+                    label: Instagram,
+                    name: instagram,
+                    widget: string,
+                  },
+                  {
+                    label: Website,
+                    name: website,
+                    widget: string,
+                  },                  
+                ],
+            }
       - { label: "Yearbook Quote", name: "quote", widget: "string", required: false,  hint: "Something Short and Witty. Without the Quotes", }
       - { label: "Body", name: "body", widget: "markdown", required: false }
   - name: "portfolio"
@@ -188,3 +213,4 @@ collections:
             }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+# when using the default proxy server port
