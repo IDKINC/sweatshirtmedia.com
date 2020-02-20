@@ -3,5 +3,6 @@ templateKey: team-member
 name: Jose
 jobTitle: Lead Designer
 featuredImage: /img/28435956_1968326346817463_5561806657740079104_n.jpg
+weight: 96
 ---
-Illustrator + Designer // Fan of philosophy, science, and technology.
+Fan of philosophy, science, and technology.
