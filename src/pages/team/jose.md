@@ -9,4 +9,4 @@ links:
   twitter: 'https://twitter.com/josehadathy'
   website: 'http://www.josehadathy.com/'
 ---
-Fan of philosophy, science, and technology.
+I enjoy doing pet portraits in my spare time.
