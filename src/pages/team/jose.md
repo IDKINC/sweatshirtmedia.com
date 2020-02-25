@@ -9,4 +9,4 @@ links:
   twitter: 'https://twitter.com/josehadathy'
   website: 'http://www.josehadathy.com/'
 ---
-I enjoy doing pet portraits in my spare time.
+I do pet portraits in my spare time.
