@@ -3,9 +3,9 @@ templateKey: team-member
 name: Peach
 jobTitle: Designer
 featuredImage: /img/peaches.jpg
+weight: 93
 links:
-  twitter: https://twitter.com/peachquintana
-  instagram: https://www.instagram.com/peachquintana/
-weight: 94
+  instagram: 'https://www.instagram.com/peachquintana/'
+  twitter: 'https://twitter.com/peachquintana'
 ---
 The boy who does it all and absolutely nothing.
