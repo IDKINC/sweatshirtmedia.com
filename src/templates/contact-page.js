@@ -8,6 +8,7 @@ import { breakpoints } from "../components/breakpoints"
 import styled from "styled-components"
 import waves from '../img/waves.svg'
 import SocialIcons from '../components/SocialIcons'
+import SEO from '../components/seo'
 
 
 
@@ -30,6 +31,8 @@ export default class Index extends React.Component {
     let content = this.state.pageContent
     return (
       <Layout cta={false}>
+    <SEO title="Contact" />
+
         <ContactContainer>
             <ContactContent>
               <h1>{ content.title }</h1>
