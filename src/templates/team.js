@@ -9,6 +9,7 @@ import Content, { HTMLContent } from '../components/Content'
 import TeamCard from '../components/team/TeamCard'
 
 import { breakpoints } from "../components/breakpoints"
+import SEO from '../components/seo'
 
 
 
@@ -43,6 +44,8 @@ const TeamPage = ({ data }) => {
 
   return (
     <Layout>
+    <SEO title="Meet the Team" />
+
       <TeamPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}

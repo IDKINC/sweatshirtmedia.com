@@ -28,7 +28,6 @@ import SEO from "../components/seo";
 
 export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
   <div>
-    <SEO title="Sweatshirt Media" />
     <Container
       style={{
         padding: "1rem",
@@ -158,6 +157,8 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout noHeader>
+    <SEO title="Sweatshirt Media" />
+
       <IndexPageTemplate
         image={frontmatter.image}
         team={team.edges}

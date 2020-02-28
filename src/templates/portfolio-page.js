@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 import Grid from '../components/layout/grid'
 import Content, { HTMLContent } from '../components/Content'
 import ProjectCard from '../components/project/ProjectCard'
+import SEO from '../components/seo'
 
 
 export const PortfolioPageTemplate = ({ title, content, contentComponent, projects }) => {
@@ -40,6 +41,7 @@ const PortfolioPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Our Portfolio" />
       <PortfolioPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
