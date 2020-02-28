@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, title, img }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -33,7 +34,7 @@ function SEO({ description, lang, meta, title, img }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title} - Creative Design Agency`}
+      titleTemplate={`%s | ${site.siteMetadata.title} - Full-Service Creative Design Agency`}
       meta={[
         {
           name: `description`,
@@ -53,7 +54,11 @@ function SEO({ description, lang, meta, title, img }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:site`,
+          content: `@mediasweatshirt`,
         },
         {
           name: `twitter:creator`,
@@ -69,7 +74,11 @@ function SEO({ description, lang, meta, title, img }) {
         },
         {
           name: `og:image`,
-          content: img
+          content: site.siteMetadata.siteUrl + img
+        },
+        {
+          name: `twitter:image`,
+          content: site.siteMetadata.siteUrl + img
         }
       ].concat(meta)}
     />

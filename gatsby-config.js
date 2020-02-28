@@ -2,8 +2,9 @@ module.exports = {
   siteMetadata: {
     title: 'Sweatshirt Media',
     description:
-      'Full Service Media & Design Company. Video, Audio, Web Development & More',
-      author: "@mediasweatshirt"
+      'Full-Service Creative Design Company. Video, Audio, Web Development & More',
+      author: "@mediasweatshirt",
+      siteUrl: "https://sweatshirtmedia.com"
   },
   plugins: [
     'gatsby-plugin-react-helmet',
