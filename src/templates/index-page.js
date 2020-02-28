@@ -24,9 +24,11 @@ import BannerCover from "../img/videobg.jpg";
 import SweatshirtIcon from "../img/sweatshirt-icon.svg";
 import Button from "../components/atoms/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SEO from "../components/seo";
 
 export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
   <div>
+    <SEO title="Sweatshirt Media" />
     <Container
       style={{
         padding: "1rem",
@@ -139,9 +141,12 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         {team.map(({ node: member }) => (
           <TeamCard person={member} />
         ))}
-        <MeetTheTeam to="/team">
-          Meet The Team <FontAwesomeIcon icon="arrow-right" />
-        </MeetTheTeam>
+        <Button
+          to="/team"
+          label="Meet The Team &raquo;"
+          size="large"
+          style={{ gridColumn: "1 / -1" }}
+        />
       </Grid>
     </Container>
   </div>
@@ -337,31 +342,29 @@ const MeetTheTeam = styled(Link)`
     }
   }
 
-&:before{
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  left: 0;
-  background: var(--mainColor);
-  content: '';
-  z-index: -1;
-  transition: 300ms;
-}
+  &:before {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    left: 0;
+    background: var(--mainColor);
+    content: "";
+    z-index: -1;
+    transition: 300ms;
+  }
 
-  &:hover{
+  &:hover {
     color: #fff;
 
-    &:before{
-
-    width: 100%;
+    &:before {
+      width: 100%;
     }
   }
 
-  &:active{
-
+  &:active {
     color: var(--darkerColor);
 
-    &:before{
+    &:before {
       left: unset;
       right: 0;
       width: 0;
