@@ -79,28 +79,26 @@ function SEO({ description, lang, meta, title, img }) {
         {
           name: `twitter:image`,
           content: site.siteMetadata.siteUrl + img
+        },
+        {
+          name: `theme-color`,
+          content: `#a29bfe`
         }
       ].concat(meta)}
-    >
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href={`${withPrefix("/")}img/icon.png`}
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        href={`${withPrefix("/")}img/icon.png`}
-        sizes="32x32"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        href={`${withPrefix("/")}img/icon.png`}
-        sizes="16x16"
-      />
-      <meta name="theme-color" content="#fff" />
-    </Helmet>
+      link={[
+        {
+          rel: "icon",
+          type: "image/png",
+          href: site.siteMetadata.siteUrl + `${withPrefix("/")}img/icon.png`,
+          sizes: "32x32"
+        },
+        {
+          rel: "apple-touch-icon",
+          href: site.siteMetadata.siteUrl + `${withPrefix("/")}img/icon.png`,
+          sizes: "180x180"
+        },
+      ]}
+    />
   );
 }
 
