@@ -7,6 +7,6 @@ weight: 96
 links:
   instagram: 'https://www.instagram.com/jhadathy'
   twitter: 'https://twitter.com/josehadathy'
-  website: 'http://www.josehadathy.com/'
+  website: ''
 ---
 I do pet portraits in my spare time.
