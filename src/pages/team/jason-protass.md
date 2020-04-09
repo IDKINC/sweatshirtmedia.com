@@ -2,7 +2,7 @@
 templateKey: team-member
 name: Jason
 jobTitle: Lead Video Editor
-featuredImage: /img/Bitmap.jpg
+featuredImage: /img/Jason-2.jpg
 weight: 95
 links:
   instagram: 'https://www.instagram.com/thejasonprotass/'
