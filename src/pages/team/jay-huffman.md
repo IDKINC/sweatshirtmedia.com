@@ -2,7 +2,7 @@
 templateKey: team-member
 name: Jay
 jobTitle: 'Cofounder, CEO'
-featuredImage: /img/jay-huffman.jpg
+featuredImage: /img/IMG_8449.jpg
 weight: 100
 links:
   instagram: 'https://instagram.com/MisterJHuffman'
