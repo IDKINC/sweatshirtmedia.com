@@ -11,7 +11,7 @@ export const Container = styled.section`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 5vh 1vh;
+  padding: 2vh 1vh;
   background: #fff;
 
   & > h1{
