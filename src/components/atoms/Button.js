@@ -15,10 +15,37 @@ const StyledLink = styled(Link)`
   transition: 100ms;
   color: #fff;
   background: var(--mainColor);
+  font-weight: 900;
+  position: relative;
+  z-index: 2;
+
+
+ &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: white;
+    border-radius: var(--borderRadius);
+    transition: 300ms;
+    z-index: -1;
+    left: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+    transform-origin: 0% 50%;
+
+  }
 
   &:hover {
-    color: #fff;
+    color: var(--darkerColor);
     background: var(--darkerColor);
+     &:before {
+      width: 100%;
+      height: 100%;
+    border-radius: var(--borderRadius) ;
+
+    }
   }
 
   &:focus {
@@ -35,8 +62,15 @@ const StyledLink = styled(Link)`
   &.button--white {
     border: 1px solid #fff;
     background: none;
+    font-weight: 400;
+
+    &:before{
+      background: var(--mainColor);
+      opacity: 0.5;
+    }
 
     &:hover {
+      color: #fff;
       background: rgba(255, 255, 255, 0.2);
     }
   }
@@ -67,7 +101,7 @@ const Button = ({
   label,
   type,
   size = "medium",
-  white = false
+  white = false,
 }) => {
   const computedClass =
     "button button--" + size + (white ? " button--white" : "");

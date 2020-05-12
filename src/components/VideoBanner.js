@@ -101,13 +101,14 @@ const VideoControls = styled.div`
   top: 0;
   right: 1rem;
   transform: rotate(-90deg);
-  transform-origin: 100% 100%;
+  transform-origin: 100% 50%;
   color: #fff;
   transition: 300ms;
 
   a {
     color: inherit;
     text-decoration: underline;
+    font-size: 0.8rem;
     &:hover {
       opacity: 0.7;
       color: var(--mainColor);

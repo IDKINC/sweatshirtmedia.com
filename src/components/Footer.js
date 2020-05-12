@@ -10,17 +10,26 @@ import logo from "../img/logo.svg";
 import waves from "../img/waves.svg";
 import ContactForm from "./contact/contactForm";
 import Button from "./atoms/Button";
+import Separator from "./atoms/Separator";
 
 const Footer = class extends React.Component {
   render() {
     return (
       <>
+
         {this.props.cta && (
           <FooterCTA>
+          <Separator  flipped/>
             <div>
-              <h2>Like What You See?</h2>
+              <h2>Let us earn that "favorite <img
+                src={logo}
+                alt="Sweatshirt"
+                style={{ width: "auto", height: "1em", verticalAlign: "middle" }}
+              />" title.</h2>
             </div>
             <Button to="/contact" label="Let's Talk »" size="large" white />
+          <Separator  color="#333"/>
+
           </FooterCTA>
         )}
 
@@ -71,12 +80,13 @@ const FooterCTA = styled.footer`
   display: flex;
   flex-direction: column;
   color: #fff;
+  position: relative;
 
   align-items: center;
   justify-content: center;
 
   @media ${breakpoints.laptop} {
-    padding: 3rem;
+    padding: 12rem 3rem 12rem;
     flex-direction: row;
   }
 
@@ -119,7 +129,7 @@ const FooterCTA = styled.footer`
 const StyledFooter = styled.footer`
   padding: 0 3rem;
   background: var(--gray);
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+  /* box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2); */
 
   display: flex;
   align-items: center;
