@@ -118,7 +118,7 @@ const FooterCTA = styled.footer`
 
 const StyledFooter = styled.footer`
   padding: 0 3rem;
-  background: var(--gray);
+  background: var(--darkerColor);
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
 
   display: flex;
