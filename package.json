@@ -10,6 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.8",
     "bulma": "^0.8.0",
     "gatsby": "^2.13.31",
+    "gatsby-cli": "^2.12.13",
     "gatsby-image": "^2.0.23",
     "gatsby-plugin-google-tagmanager": "^2.1.25",
     "gatsby-plugin-netlify": "^2.0.6",
@@ -37,6 +38,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.0.0",
     "uuid": "^3.2.1"
   },
