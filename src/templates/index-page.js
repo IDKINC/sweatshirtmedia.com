@@ -375,7 +375,8 @@ const BannerNav = styled.nav`
   margin: 2rem 0;
   color: #fff;
 
-  z-index: 2 a {
+  z-index: 2;
+   a {
     margin-bottom: 1em;
   }
 
