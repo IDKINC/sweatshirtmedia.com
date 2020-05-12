@@ -8,6 +8,5 @@ links:
   instagram: 'https://instagram.com/JackHarner'
   twitter: 'https://twitter.com/JackHarner'
   website: 'https://jackharner.com'
-quote: It's Always DNS
 ---
 Cat Dad of 4, Lover of WordPress & CSS, Coffee ~~Addict~~ Connoisseur
