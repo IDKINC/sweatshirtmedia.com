@@ -25,6 +25,11 @@ import SweatshirtIcon from "../img/sweatshirt-icon.svg";
 import Button from "../components/atoms/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SEO from "../components/seo";
+import Slide from "../components/Slider";
+import Separator from "../components/atoms/Separator";
+
+
+
 
 export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
   <div>
@@ -59,7 +64,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         <img
           src={logo}
           alt="Sweatshirt"
-          style={{ width: "100%", height: "auto" }}
+          style={{ width: "100%", height: "auto", zIndex: 2 }}
         />
         <BannerNav>
           <Button to="/portfolio" label="See Our Work" white />
@@ -67,25 +72,22 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         </BannerNav>
         <SocialIcons />
       </div>
+
+      <Separator />
     </Container>
 
     <Container>
       <h1>
         <Link to="/portfolio">We Are Makers.</Link>
       </h1>
-      <Grid col={3}>
+      <Slide settings={{slidesToShow: 5}}>
         {projects.map(({ node: project }, i) => (
           <ProjectCard project={project} />
           // <ProjectCard project={project} featured={i === 0}/>
         ))}
+      </Slide>
+    
 
-        <Button
-          to="/portfolio"
-          label="See The Rest Of Our Work &raquo;"
-          size="large"
-          style={{ gridColumn: "1 / -1" }}
-        />
-      </Grid>
     </Container>
 
     <Container
@@ -100,6 +102,8 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         backgroundAttachment: "fixed"
       }}
     >
+      <Separator flipped />
+
       <h1
         style={{
           color: "#fff",
@@ -130,9 +134,11 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           <h4>Marketing Strategy</h4>
         </SkillsCard>
       </Grid>
+    <Separator  />
     </Container>
 
     <Container>
+
       <h1>
         <Link to="/team">Get To Know Us.</Link>
       </h1>
@@ -147,6 +153,8 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           style={{ gridColumn: "1 / -1" }}
         />
       </Grid>
+
+
     </Container>
   </div>
 );
@@ -290,13 +298,13 @@ const SweatshirtIconStyled = styled.img`
   width: 15%;
   height: auto;
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  top: 1rem;
+  left: 1rem;
   z-index: 999999;
-
+  mix-blend-mode: invert;
   @media ${breakpoints.laptop} {
-    bottom: 3em;
-    right: 3em;
+    top : 1rem;
+    left: 1rem;
     width: 10%;
   }
 `;
@@ -309,6 +317,8 @@ const BannerNav = styled.nav`
   flex-direction: column;
   margin: 2rem 0;
   color: #fff;
+
+  z-index: 2
 
   a {
     margin-bottom: 1em;

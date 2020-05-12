@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: Mr. Lonley
+title: Mr. Lonely
 featuredImage: /img/Mr. Lonely.png
 clients:
   - Midland

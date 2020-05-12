@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql, withPrefix } from "gatsby";
 
 function SEO({ description, lang, meta, title, img }) {
   const { site } = useStaticQuery(
@@ -24,53 +24,53 @@ function SEO({ description, lang, meta, title, img }) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title} - Full-Service Creative Design Agency`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           property: `og:title`,
-          content: title,
+          content: title
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `website`
         },
         {
           name: `twitter:card`,
-          content: `summary_large_image`,
+          content: `summary_large_image`
         },
         {
           name: `twitter:site`,
-          content: `@mediasweatshirt`,
+          content: `@mediasweatshirt`
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.siteMetadata.author
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: title
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           name: `og:image`,
@@ -79,18 +79,35 @@ function SEO({ description, lang, meta, title, img }) {
         {
           name: `twitter:image`,
           content: site.siteMetadata.siteUrl + img
+        },
+        {
+          name: `theme-color`,
+          content: `#a29bfe`
         }
       ].concat(meta)}
+      link={[
+        {
+          rel: "icon",
+          type: "image/png",
+          href: site.siteMetadata.siteUrl + `${withPrefix("/")}img/icon.png`,
+          sizes: "32x32"
+        },
+        {
+          rel: "apple-touch-icon",
+          href: site.siteMetadata.siteUrl + `${withPrefix("/")}img/icon.png`,
+          sizes: "180x180"
+        },
+      ]}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-  img: '/img/default-og.png'
-}
+  img: "/img/default-og.png"
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -98,6 +115,6 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
   img: PropTypes.string
-}
+};
 
-export default SEO
+export default SEO;
