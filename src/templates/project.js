@@ -16,6 +16,7 @@ import { breakpoints } from "../components/breakpoints"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Grid from "../components/layout/grid"
 import { Container } from "../components/atoms/Container"
+import Slide from "../components/Slide";
 
 
 const VideoGrid = styled.div`
@@ -117,12 +118,12 @@ const SingleProject = props => {
       <Container>
         <h2><Link to='/portfolio'>More Projects</Link></h2>
 
-        <Grid col={3} >
+        <Slide>
           {related.map((project, i) => (
             <ProjectCard project={project} />
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
-        </Grid>
+        </Slide>
       </Container>
 
     </Layout>

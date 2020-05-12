@@ -25,11 +25,9 @@ import SweatshirtIcon from "../img/sweatshirt-icon.svg";
 import Button from "../components/atoms/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SEO from "../components/seo";
-import Slide from "../components/Slider";
+import Slide from "../components/Slide";
 import Separator from "../components/atoms/Separator";
-
-
-
+import Flex from "../components/layout/flex";
 
 export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
   <div>
@@ -44,7 +42,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         alignItems: "center",
         justifyContent: "center",
         backfaceVisibility: "visible",
-        position: "relative"
+        position: "relative",
       }}
     >
       <VideoBanner />
@@ -58,7 +56,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         <img
@@ -80,26 +78,19 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
       <h1>
         <Link to="/portfolio">We Are Makers.</Link>
       </h1>
-      <Slide settings={{slidesToShow: 5}}>
+      <Slide settings={{ slidesToShow: 5 }}>
         {projects.map(({ node: project }, i) => (
           <ProjectCard project={project} />
           // <ProjectCard project={project} featured={i === 0}/>
         ))}
       </Slide>
-    
-
     </Container>
 
     <Container
       style={{
         minHeight: "80vh",
-        backgroundImage: `url(${
-          !!storyTeller.childImageSharp
-            ? storyTeller.childImageSharp.fluid.src
-            : storyTeller
-        })`,
-        backgroundPosition: "center center",
-        backgroundAttachment: "fixed"
+
+        backgroundColor: "var(--mainColor)",
       }}
     >
       <Separator flipped />
@@ -109,36 +100,46 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           color: "#fff",
           width: "100%",
           textShadow:
-            "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)"
+            "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)",
         }}
       >
         We Are Storytellers.
       </h1>
-      <Grid col={3} style={{ background: "transparent", width: "80%" }}>
+      <Flex col={3} style={{ flexWrap: "wrap" }}>
         <SkillsCard>
+          <FontAwesomeIcon icon="hammer" />
           <h4>Brand Identity</h4>
         </SkillsCard>
         <SkillsCard>
+          <FontAwesomeIcon icon="video" />
+
           <h4>Video Production</h4>
         </SkillsCard>
         <SkillsCard>
+          <FontAwesomeIcon icon="camera" />
+
           <h4>Photography</h4>
         </SkillsCard>
         <SkillsCard>
+          <FontAwesomeIcon icon="palette" />
+
           <h4>Art Direction</h4>
         </SkillsCard>
         <SkillsCard>
+          <FontAwesomeIcon icon="desktop" />
+
           <h4>Web Development</h4>
         </SkillsCard>
         <SkillsCard>
+          <FontAwesomeIcon icon="satellite-dish" />
+
           <h4>Marketing Strategy</h4>
         </SkillsCard>
-      </Grid>
-    <Separator  />
+      </Flex>
+      <Separator />
     </Container>
 
     <Container>
-
       <h1>
         <Link to="/team">Get To Know Us.</Link>
       </h1>
@@ -153,8 +154,6 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           style={{ gridColumn: "1 / -1" }}
         />
       </Grid>
-
-
     </Container>
   </div>
 );
@@ -165,7 +164,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout noHeader>
-    <SEO title="Sweatshirt Media" />
+      <SEO title="Sweatshirt Media" />
 
       <IndexPageTemplate
         image={frontmatter.image}
@@ -180,9 +179,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object
-    })
-  })
+      frontmatter: PropTypes.object,
+    }),
+  }),
 };
 
 export default IndexPage;
@@ -268,28 +267,81 @@ export const pageQuery = graphql`
 const SkillsCard = styled.div`
   background: #fff;
   padding: 1rem;
-  transition: 100ms;
-  box-shadow: var(--boxShadow);
-  border-radius: var(--borderRadius);
+  /* margin: 1rem; */
+  transition: 300ms;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  height: 7rem;
+
+  @media ${breakpoints.laptop} {
+  box-shadow: var(--boxShadow);
+
+    width: 15vw;
+
+    &:hover {
+      width: 20vw;
+    }
+  }
+
+  &:first-of-type {
+    border-radius: var(--borderRadius) 0 0 0;
+
+    @media ${breakpoints.laptop} {
+      border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+    }
+  }
+
+  &:nth-child(2){
+    border-radius: 0 var(--borderRadius) 0 0; 
+    @media ${breakpoints.laptop} {
+      border-radius: none;
+    }
+  }
+
+  &:nth-last-child(2){
+    border-radius: 0 0 0 var(--borderRadius) ; 
+    @media ${breakpoints.laptop} {
+      border-radius: none;
+    }
+  }
+
+  &:last-of-type {
+    border-radius: 0 0  var(--borderRadius) 0 ;
+
+    @media ${breakpoints.laptop} {
+      border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+    }
+  }
 
   h4 {
-    margin: 0;
+    margin: 0 0.5rem;
     text-align: center;
 
     font-size: 0.8em;
+
 
     @media ${breakpoints.laptop} {
       font-size: inherit;
     }
   }
 
+  svg {
+    font-size: 3rem;
+    width: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
   &:hover {
-    background: var(--mainColor);
+    background: var(--darkerColor);
     color: #fff;
+
+    h4 {
+      font-weight: 900;
+    }
   }
 `;
 
@@ -303,7 +355,7 @@ const SweatshirtIconStyled = styled.img`
   z-index: 999999;
   mix-blend-mode: invert;
   @media ${breakpoints.laptop} {
-    top : 1rem;
+    top: 1rem;
     left: 1rem;
     width: 10%;
   }
@@ -318,9 +370,7 @@ const BannerNav = styled.nav`
   margin: 2rem 0;
   color: #fff;
 
-  z-index: 2
-
-  a {
+  z-index: 2 a {
     margin-bottom: 1em;
   }
 
