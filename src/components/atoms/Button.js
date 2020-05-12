@@ -25,13 +25,15 @@ const StyledLink = styled(Link)`
     position: absolute;
     display: block;
     width: 0%;
-    height: 0%;
+    height: 100%;
     background: white;
     border-radius: var(--borderRadius);
     transition: 300ms;
     z-index: -1;
+    left: 0;
     top: 50%;
     transform: translate(0%, -50%);
+    transform-origin: 0% 50%;
 
   }
 
@@ -41,6 +43,8 @@ const StyledLink = styled(Link)`
      &:before {
       width: 100%;
       height: 100%;
+    border-radius: var(--borderRadius) ;
+
     }
   }
 
@@ -60,8 +64,9 @@ const StyledLink = styled(Link)`
     background: none;
     font-weight: 400;
 
-    &:before, &:after{
-      background: var(--darkerColor);
+    &:before{
+      background: var(--mainColor);
+      opacity: 0.5;
     }
 
     &:hover {

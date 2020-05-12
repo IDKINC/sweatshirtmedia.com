@@ -86,7 +86,7 @@ const FooterCTA = styled.footer`
   justify-content: center;
 
   @media ${breakpoints.laptop} {
-    padding: 6rem 3rem 6rem;
+    padding: 12rem 3rem 12rem;
     flex-direction: row;
   }
 

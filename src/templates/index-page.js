@@ -4,6 +4,8 @@ import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 
 import logo from "../img/logo.svg";
+import waves from "../img/waves.svg";
+
 
 import Layout from "../components/Layout";
 import TeamCard from "../components/team/TeamCard";
@@ -90,7 +92,9 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
       style={{
         minHeight: "80vh",
 
-        backgroundColor: "var(--mainColor)",
+        
+
+        background: "var(--mainColor) url(" + waves + ") bottom center no-repeat",
       }}
     >
       <Separator flipped />
@@ -276,6 +280,7 @@ const SkillsCard = styled.div`
   flex-direction: column;
   width: 50%;
   height: 7rem;
+  will-change: transform;
 
   @media ${breakpoints.laptop} {
   box-shadow: var(--boxShadow);
@@ -298,14 +303,14 @@ const SkillsCard = styled.div`
   &:nth-child(2){
     border-radius: 0 var(--borderRadius) 0 0; 
     @media ${breakpoints.laptop} {
-      border-radius: none;
+      border-radius: 0;
     }
   }
 
   &:nth-last-child(2){
     border-radius: 0 0 0 var(--borderRadius) ; 
     @media ${breakpoints.laptop} {
-      border-radius: none;
+      border-radius: 0;
     }
   }
 
