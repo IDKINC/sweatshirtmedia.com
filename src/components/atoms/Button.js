@@ -39,7 +39,7 @@ const StyledLink = styled(Link)`
 
   &:hover {
     color: var(--darkerColor);
-    background: var(--darkerColor);
+    /* background: var(--darkerColor); */
      &:before {
       width: 100%;
       height: 100%;

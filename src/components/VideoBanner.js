@@ -94,6 +94,18 @@ const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
+
+  &:after{
+    content: '';
+    background: var(--mainColor);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    display: block;
+    top: 0;
+    opacity: 0.5;
+  }
 `;
 
 const VideoControls = styled.div`
@@ -104,6 +116,8 @@ const VideoControls = styled.div`
   transform-origin: 100% 50%;
   color: #fff;
   transition: 300ms;
+  z-index: 3;
+
 
   a {
     color: inherit;
