@@ -6,7 +6,6 @@ import styled from "styled-components";
 import logo from "../img/logo.svg";
 import waves from "../img/waves.svg";
 
-
 import Layout from "../components/Layout";
 import TeamCard from "../components/team/TeamCard";
 import ProjectCard from "../components/project/ProjectCard";
@@ -66,6 +65,10 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           alt="Sweatshirt"
           style={{ width: "100%", height: "auto", zIndex: 2 }}
         />
+        <Tagline>
+          our mission is to help you bridge the gap between creative and
+          critical thinking
+        </Tagline>
         <BannerNav>
           <Button to="/portfolio" label="See Our Work" white />
           <Button to="/contact" label="Get In Touch &raquo;" />
@@ -75,90 +78,6 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
 
       <Separator />
     </Container>
-
-    <Container>
-      <h1>
-        <Link to="/portfolio">We Are Makers.</Link>
-      </h1>
-      <Slide settings={{ slidesToShow: 5 }}>
-        {projects.map(({ node: project }, i) => (
-          <ProjectCard project={project} />
-          // <ProjectCard project={project} featured={i === 0}/>
-        ))}
-      </Slide>
-    </Container>
-
-    <Container
-      style={{
-        minHeight: "80vh",
-
-        
-
-        background: "var(--mainColor) url(" + waves + ") bottom center no-repeat",
-      }}
-    >
-      <Separator flipped />
-
-      <h1
-        style={{
-          color: "#fff",
-          width: "100%",
-          textShadow:
-            "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)",
-        }}
-      >
-        We Are Storytellers.
-      </h1>
-      <Flex col={3} style={{ flexWrap: "wrap" }}>
-        <SkillsCard>
-          <FontAwesomeIcon icon="hammer" />
-          <h4>Brand Identity</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="video" />
-
-          <h4>Video Production</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="camera" />
-
-          <h4>Photography</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="palette" />
-
-          <h4>Art Direction</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="desktop" />
-
-          <h4>Web Development</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="satellite-dish" />
-
-          <h4>Marketing Strategy</h4>
-        </SkillsCard>
-      </Flex>
-      <Separator />
-    </Container>
-
-    <Container>
-      <h1>
-        <Link to="/team">Get To Know Us.</Link>
-      </h1>
-      <Grid col={4}>
-        {team.map(({ node: member }) => (
-          <TeamCard person={member} />
-        ))}
-        <Button
-          to="/team"
-          label="Meet The Team &raquo;"
-          size="large"
-          style={{ gridColumn: "1 / -1" }}
-        />
-      </Grid>
-    </Container>
   </div>
 );
 
@@ -167,7 +86,7 @@ const IndexPage = ({ data }) => {
   const { team, projects, storyTeller } = data;
 
   return (
-    <Layout noHeader>
+    <Layout noHeader noFooter>
       <SEO title="Sweatshirt Media" />
 
       <IndexPageTemplate
@@ -268,86 +187,12 @@ export const pageQuery = graphql`
   }
 `;
 
-const SkillsCard = styled.div`
-  background: #fff;
-  padding: 1rem;
-  /* margin: 1rem; */
-  transition: 300ms;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  height: 7rem;
-  will-change: transform;
-
-  @media ${breakpoints.laptop} {
-  box-shadow: var(--boxShadow);
-
-    width: 15vw;
-
-    &:hover {
-      width: 20vw;
-    }
-  }
-
-  &:first-of-type {
-    border-radius: var(--borderRadius) 0 0 0;
-
-    @media ${breakpoints.laptop} {
-      border-radius: var(--borderRadius) 0 0 var(--borderRadius);
-    }
-  }
-
-  &:nth-child(2){
-    border-radius: 0 var(--borderRadius) 0 0; 
-    @media ${breakpoints.laptop} {
-      border-radius: 0;
-    }
-  }
-
-  &:nth-last-child(2){
-    border-radius: 0 0 0 var(--borderRadius) ; 
-    @media ${breakpoints.laptop} {
-      border-radius: 0;
-    }
-  }
-
-  &:last-of-type {
-    border-radius: 0 0  var(--borderRadius) 0 ;
-
-    @media ${breakpoints.laptop} {
-      border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
-    }
-  }
-
-  h4 {
-    margin: 0 0.5rem;
-    text-align: center;
-
-    font-size: 0.8em;
-
-
-    @media ${breakpoints.laptop} {
-      font-size: inherit;
-    }
-  }
-
-  svg {
-    font-size: 3rem;
-    width: 3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  &:hover {
-    background: var(--darkerColor);
-    color: #fff;
-
-    h4 {
-      font-weight: 900;
-    }
-  }
+const Tagline = styled.h2`
+  color: #fff;
+  margin: 0;
+  font-size: 1.5rem;
+  max-width: 50%;
+  text-align: center;
 `;
 
 const SweatshirtIconStyled = styled.img`
@@ -376,8 +221,13 @@ const BannerNav = styled.nav`
   color: #fff;
 
   z-index: 2;
-   a {
+  a {
     margin-bottom: 1em;
+    text-transform: lowercase;
+
+    &.main{
+      background: var(--mainColor);
+    }
   }
 
   @media ${breakpoints.laptop} {
@@ -386,55 +236,5 @@ const BannerNav = styled.nav`
     grid-gap: 1rem;
 
     width: 50vw;
-  }
-`;
-
-const MeetTheTeam = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--borderRadius);
-  z-index: 1;
-  transition: 300ms;
-
-  @media ${breakpoints.laptop} {
-    flex-direction: column;
-
-    font-size: 2rem;
-    svg {
-      width: 4rem;
-    }
-  }
-
-  &:before {
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    left: 0;
-    background: var(--mainColor);
-    content: "";
-    z-index: -1;
-    transition: 300ms;
-  }
-
-  &:hover {
-    color: #fff;
-
-    &:before {
-      width: 100%;
-    }
-  }
-
-  &:active {
-    color: var(--darkerColor);
-
-    &:before {
-      left: unset;
-      right: 0;
-      width: 0;
-    }
   }
 `;

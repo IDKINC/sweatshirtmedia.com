@@ -97,7 +97,7 @@ const VideoContainer = styled.div`
 
   &:after{
     content: '';
-    background: var(--mainColor);
+    /* background: var(--mainColor); */
     width: 100%;
     height: 100%;
     z-index: 2;
