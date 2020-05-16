@@ -1,5 +1,4 @@
 import React from "react";
-import { navigate } from "gatsby-link";
 import Layout from "../components/Layout";
 import ContactForm from "../components/contact/contactForm";
 
@@ -36,6 +35,10 @@ export default class Index extends React.Component {
         <ContactContainer>
           <ClockContainer>
             <Clock />
+            <Clock />
+            <Clock />
+            <Clock />
+            <Clock />
           </ClockContainer>
           <ContactContent>
             <h1>{content.title}</h1>
@@ -49,6 +52,8 @@ export default class Index extends React.Component {
               }}
             />
           </ContactContent>
+
+          <SocialIcons />
         </ContactContainer>
       </Layout>
     );

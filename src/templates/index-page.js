@@ -1,17 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 
 import logo from "../img/logo.svg";
-import waves from "../img/waves.svg";
 
 import Layout from "../components/Layout";
-import TeamCard from "../components/team/TeamCard";
-import ProjectCard from "../components/project/ProjectCard";
-
-import Grid from "../components/layout/grid";
-
 import { breakpoints } from "../components/breakpoints";
 
 import SocialIcons from "../components/SocialIcons";
@@ -22,13 +16,9 @@ import { Container } from "../components/atoms/Container";
 
 import BannerCover from "../img/videobg.jpg";
 
-import SweatshirtIcon from "../img/sweatshirt-icon.svg";
 import Button from "../components/atoms/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SEO from "../components/seo";
-import Slide from "../components/Slide";
 import Separator from "../components/atoms/Separator";
-import Flex from "../components/layout/flex";
 
 export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
   <div>
@@ -204,21 +194,6 @@ const Tagline = styled.h2`
   
 `;
 
-const SweatshirtIconStyled = styled.img`
-  opacity: 0.5;
-  width: 15%;
-  height: auto;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 999999;
-  mix-blend-mode: invert;
-  @media ${breakpoints.laptop} {
-    top: 1rem;
-    left: 1rem;
-    width: 10%;
-  }
-`;
 
 const BannerNav = styled.nav`
   width: 100%;

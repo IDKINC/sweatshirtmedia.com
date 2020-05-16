@@ -8,9 +8,7 @@ import { breakpoints } from "./breakpoints";
 
 import logo from "../img/logo.svg";
 import waves from "../img/waves.svg";
-import ContactForm from "./contact/contactForm";
 import Button from "./atoms/Button";
-import Separator from "./atoms/Separator";
 
 const Footer = class extends React.Component {
   render() {
