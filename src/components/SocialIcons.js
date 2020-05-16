@@ -3,7 +3,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styled from "styled-components";
-import { Link } from "gatsby";
 
 const SocialIcons = ({ color, width }) => {
   return (
@@ -19,10 +18,6 @@ const SocialIcons = ({ color, width }) => {
       <a title="linkedin" href="https://www.linkedin.com/mediasweatshirt/">
         <FontAwesomeIcon width="16" icon={["fab", "linkedin"]} />
       </a>
-
-      <Link to="/contact" title="Email Us">
-        <FontAwesomeIcon width="16" icon={"envelope"} />{" "}
-      </Link>
     </SocialIconsGrid>
   );
 };
@@ -32,11 +27,11 @@ export default SocialIcons;
 const SocialIconsGrid = styled.div`
 width: 100%;
 display: flex;
-align-items; center;
+align-items: center;
 justify-content: center;
 
 a{
-  padding: 1em;
+  padding: 0.5em;
   margin: 1em;
   display: flex;
   align-items: center;

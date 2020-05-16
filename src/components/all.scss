@@ -17,6 +17,8 @@ $darkerColor: darken($mainColor, 10);
   --grey: #333;
   --borderRadius: 10px;
   --boxShadow: 0 3px 6px -2px rgba(0, 0, 0, 0.4);
+
+  --clipPath: polygon(0 0, 100% 0, 100% 100%, 50% 94%, 0% 100%);
 }
 
 // @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,900,900i&display=swap");

@@ -44,11 +44,12 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         justifyContent: "center",
         backfaceVisibility: "visible",
         position: "relative",
+        overflow: "hidden",
       }}
     >
       <VideoBanner />
 
-      <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
+      {/* <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" /> */}
       <div
         style={{
           zIndex: "999",
@@ -66,8 +67,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           style={{ width: "100%", height: "auto", zIndex: 2 }}
         />
         <Tagline>
-          our mission is to help you bridge the gap between creative and
-          critical thinking
+        helping you bridge the gap between creative and critical thinking
         </Tagline>
         <BannerNav>
           <Button to="/portfolio" label="See Our Work" white />
@@ -76,7 +76,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         <SocialIcons />
       </div>
 
-      <Separator />
+      <Separator color="var(--mainColor)" />
     </Container>
   </div>
 );
@@ -86,7 +86,7 @@ const IndexPage = ({ data }) => {
   const { team, projects, storyTeller } = data;
 
   return (
-    <Layout noHeader noFooter>
+    <Layout noFooter whiteIcon>
       <SEO title="Sweatshirt Media" />
 
       <IndexPageTemplate
@@ -190,9 +190,18 @@ export const pageQuery = graphql`
 const Tagline = styled.h2`
   color: #fff;
   margin: 0;
-  font-size: 1.5rem;
-  max-width: 50%;
+  font-size: 1rem;
+  max-width: 100%;
   text-align: center;
+
+  @media ${breakpoints.laptop} {
+
+    font-size: 1.5rem;
+
+    max-width: 60%;
+
+  }
+  
 `;
 
 const SweatshirtIconStyled = styled.img`
@@ -235,6 +244,6 @@ const BannerNav = styled.nav`
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
 
-    width: 50vw;
+    width: 30vw;
   }
 `;

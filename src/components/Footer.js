@@ -19,7 +19,6 @@ const Footer = class extends React.Component {
 
         {this.props.cta && (
           <FooterCTA>
-          <Separator  flipped/>
             <div>
               <h2>Let us earn that "favorite <img
                 src={logo}
@@ -28,7 +27,6 @@ const Footer = class extends React.Component {
               />" title.</h2>
             </div>
             <Button to="/contact" label="Let's Talk »" size="large" white />
-          <Separator  color="#333"/>
 
           </FooterCTA>
         )}
@@ -85,7 +83,12 @@ const FooterCTA = styled.footer`
   align-items: center;
   justify-content: center;
 
+  clip-path: var(--clipPath);
+  margin-bottom: -2em;
+
   @media ${breakpoints.laptop} {
+
+    margin-bottom: -2em;
     padding: 12rem 3rem 12rem;
     flex-direction: row;
   }
@@ -127,7 +130,8 @@ const FooterCTA = styled.footer`
 `;
 
 const StyledFooter = styled.footer`
-  padding: 0 3rem;
+  padding: 3rem;
+  padding-bottom: 1.5rem;
   background: var(--gray);
   /* box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2); */
 

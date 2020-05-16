@@ -95,7 +95,7 @@ const SingleProject = props => {
 
   console.log(galleryArray);
   return (
-    <Layout>
+    <Layout whiteIcon>
       <SEO title={project.frontmatter.title + " - " + project.fields.type + " " + (project.fields.clients.length ? "for " + project.fields.clients : "")} img={project.frontmatter.featuredImage.childImageSharp.resize.src}/>
       <VideoGrid>
         <Gallery pictures={galleryArray} />
