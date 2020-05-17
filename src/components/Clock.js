@@ -6,12 +6,12 @@ import { breakpoints } from "./breakpoints";
 
 
 
-const ClockComponent = ({ tzOffset, city }) => {
+const ClockComponent = ({ tzOffset, city, onClick, selected }) => {
   const [value, setValue] = useState(0);
 
   
   return (
-    <ClockWrapper>
+    <ClockWrapper onClick={onClick} className={selected? "selected" : ""}>
       <Clock ticking={true} timezone={tzOffset} format={"h:mm a"} style={{textTransform: "full-width"}} />
       {city && <span>{city}</span>}
     </ClockWrapper>
@@ -26,15 +26,43 @@ const ClockWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
 
   text-transform: lowercase;
-
+  margin: 15px 0.5em;
+  position: relative;
   color: #fff;
+  cursor: pointer;
+
+  &:after{
+    content: '';
+
+    width: 25%;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    bottom: -7.5px;
+  }
 
   @media ${breakpoints.laptop} {
 
-    text-align: right;
+    text-align: left;
+
+    &:after{
+      left: 0;
+    }
 
   }
+
+  &.selected{
+    time{
+      font-weight: bold;
+    }
+
+    &:after{
+      background: var(--mainColor);
+    }
+  }
+
+
 `;

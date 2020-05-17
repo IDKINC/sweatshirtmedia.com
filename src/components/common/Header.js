@@ -249,7 +249,7 @@ const StyledHeader = styled.header`
   top: 0;
   width: 100%;
   transition: height 300ms, background 300ms;
-  will-change: transform;
+  will-change: auto;
 
   height: 0;
 
