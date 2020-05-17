@@ -1,38 +1,40 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import {Clock as ReactClock} from 'react-clock';
+import Clock from "react-live-clock";
+import { breakpoints } from "./breakpoints";
 
-const Clock = ({ time, city }) => {
 
-  const [value, setValue] = useState(new Date());
 
-  useEffect(() => {
-    const interval = setInterval(
-      () => setValue(new Date() ),
-      1000
-    );
+const ClockComponent = ({ tzOffset, city }) => {
+  const [value, setValue] = useState(0);
 
-    return () => {
-      clearInterval(interval);
-    }
-  }, []);
+  
   return (
     <ClockWrapper>
-  <ReactClock value={value} renderMinuteMarks={false} />
+      <Clock ticking={true} timezone={tzOffset} format={"h:mm a"} style={{textTransform: "full-width"}} />
+      {city && <span>{city}</span>}
     </ClockWrapper>
   );
 };
 
-export default Clock;
+export default ClockComponent;
 
 const ClockWrapper = styled.div`
-  border: 3px solid black;
-  box-shadow:2px 3px 8px 0 rgba(0, 0, 0, 0.1);
-  background: #fff;
-  border-radius: 100%;
-  margin: 1em;
-  
-  
+  /* margin: 1em; */
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  text-transform: lowercase;
+
+  color: #fff;
+
+  @media ${breakpoints.laptop} {
+
+    text-align: right;
+
+  }
 `;

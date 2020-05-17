@@ -129,8 +129,7 @@ const NavBG = styled.div`
   z-index: 1000;
 
   @media ${breakpoints.laptop} {
-    display: none;
-  }
+    background: rgba(0, 0, 0, 0);  }
 `;
 
 const Icon = styled.img`

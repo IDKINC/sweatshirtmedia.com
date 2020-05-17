@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styled from "styled-components";
 
-const SocialIcons = ({ color, width }) => {
+const SocialIcons = ({ color, width, style={} }) => {
   return (
-    <SocialIconsGrid color={color} width={width}>
+    <SocialIconsGrid color={color} width={width} style={{...style}}>
       <a title="twitter" href="https://twitter.com/mediasweatshirt">
         <FontAwesomeIcon width="16" icon={["fab", "twitter"]} />
       </a>
