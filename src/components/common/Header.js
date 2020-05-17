@@ -168,14 +168,20 @@ const IconWrapper = styled.div`
   cursor: pointer;
   transition: 300ms;
 
-  span, ${Icon}{
-    
+  span,
+  ${Icon} {
     transform: rotateY(0deg);
-
-transition: transform 600ms;
+    transition: transform 600ms;
   }
 
-  span{transition-duration: 800ms;  }
+  span {
+    transition-duration: 800ms;
+    font-size: 0.5rem;
+
+    @media ${breakpoints.laptop} {
+      font-size: 1rem;
+    }
+  }
 
   &:hover {
     background: rgba(51, 51, 51, 0.6);
@@ -185,9 +191,9 @@ transition: transform 600ms;
     background: var(--mainColor);
     transform: rotateY(180deg);
 
-    span, ${Icon}{
+    span,
+    ${Icon} {
       transform: rotateY(-180deg);
-
     }
 
     &:hover {
@@ -202,7 +208,6 @@ transition: transform 600ms;
     height: 9.5rem;
     width: 7.5rem;
   }
-
 `;
 
 const Nav = styled.nav`
