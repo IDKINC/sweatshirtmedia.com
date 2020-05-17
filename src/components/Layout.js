@@ -1,24 +1,25 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import './all.scss'
+import React from "react";
+import Footer from "../components/Footer";
+import "./all.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import useSiteMetadata from './SiteMetadata'
-import { withPrefix } from 'gatsby'
-
-import './FontAwesome'
-const TemplateWrapper = ({ children, noHeader = false, cta=true }) => {
-  const { title, description } = useSiteMetadata()
+import "./FontAwesome";
+import Header from "./common/Header";
+const TemplateWrapper = ({
+  children,
+  noHeader = false,
+  noFooter = false,
+  cta = true,
+  whiteIcon = false,
+}) => {
   return (
     <div>
-      {!noHeader && <Navbar />}
+      {!noHeader && <Header whiteIcon={whiteIcon} />}
       <main>{children}</main>
-      <Footer cta={cta} />
+      {!noFooter && <Footer cta={cta} />}
     </div>
-  )
-}
+  );
+};
 
-export default TemplateWrapper
+export default TemplateWrapper;

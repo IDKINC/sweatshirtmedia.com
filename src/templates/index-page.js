@@ -1,18 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 
 import logo from "../img/logo.svg";
-import waves from "../img/waves.svg";
-
 
 import Layout from "../components/Layout";
-import TeamCard from "../components/team/TeamCard";
-import ProjectCard from "../components/project/ProjectCard";
-
-import Grid from "../components/layout/grid";
-
 import { breakpoints } from "../components/breakpoints";
 
 import SocialIcons from "../components/SocialIcons";
@@ -23,13 +16,9 @@ import { Container } from "../components/atoms/Container";
 
 import BannerCover from "../img/videobg.jpg";
 
-import SweatshirtIcon from "../img/sweatshirt-icon.svg";
 import Button from "../components/atoms/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SEO from "../components/seo";
-import Slide from "../components/Slide";
 import Separator from "../components/atoms/Separator";
-import Flex from "../components/layout/flex";
 
 export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
   <div>
@@ -45,11 +34,12 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         justifyContent: "center",
         backfaceVisibility: "visible",
         position: "relative",
+        overflow: "hidden",
       }}
     >
       <VideoBanner />
 
-      <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
+      {/* <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" /> */}
       <div
         style={{
           zIndex: "999",
@@ -66,6 +56,9 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           alt="Sweatshirt"
           style={{ width: "100%", height: "auto", zIndex: 2 }}
         />
+        <Tagline>
+        helping you bridge the gap between creative and critical thinking
+        </Tagline>
         <BannerNav>
           <Button to="/portfolio" label="See Our Work" white />
           <Button to="/contact" label="Get In Touch &raquo;" />
@@ -73,91 +66,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         <SocialIcons />
       </div>
 
-      <Separator />
-    </Container>
-
-    <Container>
-      <h1>
-        <Link to="/portfolio">We Are Makers.</Link>
-      </h1>
-      <Slide settings={{ slidesToShow: 5 }}>
-        {projects.map(({ node: project }, i) => (
-          <ProjectCard project={project} />
-          // <ProjectCard project={project} featured={i === 0}/>
-        ))}
-      </Slide>
-    </Container>
-
-    <Container
-      style={{
-        minHeight: "80vh",
-
-        
-
-        background: "var(--mainColor) url(" + waves + ") bottom center no-repeat",
-      }}
-    >
-      <Separator flipped />
-
-      <h1
-        style={{
-          color: "#fff",
-          width: "100%",
-          textShadow:
-            "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)",
-        }}
-      >
-        We Are Storytellers.
-      </h1>
-      <Flex col={3} style={{ flexWrap: "wrap" }}>
-        <SkillsCard>
-          <FontAwesomeIcon icon="hammer" />
-          <h4>Brand Identity</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="video" />
-
-          <h4>Video Production</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="camera" />
-
-          <h4>Photography</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="palette" />
-
-          <h4>Art Direction</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="desktop" />
-
-          <h4>Web Development</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <FontAwesomeIcon icon="satellite-dish" />
-
-          <h4>Marketing Strategy</h4>
-        </SkillsCard>
-      </Flex>
-      <Separator />
-    </Container>
-
-    <Container>
-      <h1>
-        <Link to="/team">Get To Know Us.</Link>
-      </h1>
-      <Grid col={4}>
-        {team.map(({ node: member }) => (
-          <TeamCard person={member} />
-        ))}
-        <Button
-          to="/team"
-          label="Meet The Team &raquo;"
-          size="large"
-          style={{ gridColumn: "1 / -1" }}
-        />
-      </Grid>
+      <Separator color="var(--mainColor)" />
     </Container>
   </div>
 );
@@ -167,7 +76,7 @@ const IndexPage = ({ data }) => {
   const { team, projects, storyTeller } = data;
 
   return (
-    <Layout noHeader>
+    <Layout noFooter whiteIcon>
       <SEO title="Sweatshirt Media" />
 
       <IndexPageTemplate
@@ -268,103 +177,23 @@ export const pageQuery = graphql`
   }
 `;
 
-const SkillsCard = styled.div`
-  background: #fff;
-  padding: 1rem;
-  /* margin: 1rem; */
-  transition: 300ms;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  height: 7rem;
-  will-change: transform;
+const Tagline = styled.h2`
+  color: #fff;
+  margin: 0;
+  font-size: 1rem;
+  max-width: 100%;
+  text-align: center;
 
   @media ${breakpoints.laptop} {
-  box-shadow: var(--boxShadow);
 
-    width: 15vw;
+    font-size: 1.5rem;
 
-    &:hover {
-      width: 20vw;
-    }
+    max-width: 60%;
+
   }
-
-  &:first-of-type {
-    border-radius: var(--borderRadius) 0 0 0;
-
-    @media ${breakpoints.laptop} {
-      border-radius: var(--borderRadius) 0 0 var(--borderRadius);
-    }
-  }
-
-  &:nth-child(2){
-    border-radius: 0 var(--borderRadius) 0 0; 
-    @media ${breakpoints.laptop} {
-      border-radius: 0;
-    }
-  }
-
-  &:nth-last-child(2){
-    border-radius: 0 0 0 var(--borderRadius) ; 
-    @media ${breakpoints.laptop} {
-      border-radius: 0;
-    }
-  }
-
-  &:last-of-type {
-    border-radius: 0 0  var(--borderRadius) 0 ;
-
-    @media ${breakpoints.laptop} {
-      border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
-    }
-  }
-
-  h4 {
-    margin: 0 0.5rem;
-    text-align: center;
-
-    font-size: 0.8em;
-
-
-    @media ${breakpoints.laptop} {
-      font-size: inherit;
-    }
-  }
-
-  svg {
-    font-size: 3rem;
-    width: 3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  &:hover {
-    background: var(--darkerColor);
-    color: #fff;
-
-    h4 {
-      font-weight: 900;
-    }
-  }
+  
 `;
 
-const SweatshirtIconStyled = styled.img`
-  opacity: 0.5;
-  width: 15%;
-  height: auto;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 999999;
-  mix-blend-mode: invert;
-  @media ${breakpoints.laptop} {
-    top: 1rem;
-    left: 1rem;
-    width: 10%;
-  }
-`;
 
 const BannerNav = styled.nav`
   width: 100%;
@@ -376,8 +205,13 @@ const BannerNav = styled.nav`
   color: #fff;
 
   z-index: 2;
-   a {
+  a {
     margin-bottom: 1em;
+    text-transform: lowercase;
+
+    &.main{
+      background: var(--mainColor);
+    }
   }
 
   @media ${breakpoints.laptop} {
@@ -385,56 +219,6 @@ const BannerNav = styled.nav`
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
 
-    width: 50vw;
-  }
-`;
-
-const MeetTheTeam = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--borderRadius);
-  z-index: 1;
-  transition: 300ms;
-
-  @media ${breakpoints.laptop} {
-    flex-direction: column;
-
-    font-size: 2rem;
-    svg {
-      width: 4rem;
-    }
-  }
-
-  &:before {
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    left: 0;
-    background: var(--mainColor);
-    content: "";
-    z-index: -1;
-    transition: 300ms;
-  }
-
-  &:hover {
-    color: #fff;
-
-    &:before {
-      width: 100%;
-    }
-  }
-
-  &:active {
-    color: var(--darkerColor);
-
-    &:before {
-      left: unset;
-      right: 0;
-      width: 0;
-    }
+    width: 30vw;
   }
 `;

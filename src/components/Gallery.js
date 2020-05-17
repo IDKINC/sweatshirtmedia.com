@@ -40,6 +40,8 @@ class VideoBanner extends React.Component {
 
   updateMainImage = (index) => {
 
+    window.navigator.vibrate(50);
+
     this.setState({ mainImage: this.state.pictures[index], selectedIndex: index });
 
   }
@@ -204,7 +206,7 @@ justify-content: center;
 
 svg{
   width: 0!important;
-  transition: 300ms;
+  transition: color 300ms;
 }
 
 &:hover{

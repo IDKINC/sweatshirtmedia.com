@@ -63,6 +63,7 @@ const StyledLink = styled(Link)`
     border: 1px solid #fff;
     background: none;
     font-weight: 400;
+    color: #fff;
 
     &:before{
       background: var(--mainColor);
