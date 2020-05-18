@@ -17,13 +17,13 @@ const Footer = class extends React.Component {
 
         {this.props.cta && (
           <FooterCTA>
-            <div>
+            {/* <div>
               <h2>Let us earn that "favorite <img
                 src={logo}
                 alt="Sweatshirt"
                 style={{ width: "auto", height: "1em", verticalAlign: "middle" }}
               />" title.</h2>
-            </div>
+            </div> */}
             <Button to="/contact" label="Let's Talk »" size="large" white />
 
           </FooterCTA>
@@ -72,7 +72,7 @@ const FooterCTA = styled.footer`
   background: var(--mainColor) url(${waves}) bottom center no-repeat;
   background-size: 100%;
   padding: 3rem 1rem;
-  min-height: 25vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -87,18 +87,8 @@ const FooterCTA = styled.footer`
   @media ${breakpoints.laptop} {
 
     margin-bottom: -2em;
-    padding: 12rem 3rem 12rem;
+    /* padding: 12rem 3rem 12rem; */
     flex-direction: row;
-  }
-
-  & > div {
-    margin-left: 0;
-    text-align: center;
-  }
-  h1,
-  h2 {
-    font-weight: 900;
-    margin: 0 auto;
   }
 
   a.button {
@@ -109,7 +99,7 @@ const FooterCTA = styled.footer`
       margin: 1rem;
 
     @media ${breakpoints.laptop} {
-      width: auto;
+      width: 50%;
     }
   }
 
