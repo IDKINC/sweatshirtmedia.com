@@ -10,7 +10,6 @@ import SocialIcons from "../components/SocialIcons";
 import SEO from "../components/seo";
 import Clock from "../components/Clock";
 
-
 import atlanta from "../img/city-bg.jpg";
 import la from "../img/la.jpg";
 import albuquerque from "../img/albuquerque.jpg";
@@ -30,43 +29,39 @@ const timeZones = [
   { offset: "America/Chicago", city: "Austin", img: austin },
   { offset: "America/New_York", city: "Atlanta", img: atlanta },
   { offset: "America/New_York", city: "Boston", img: boston },
-  { offset: "Europe/Paris", city: "Paris", img: paris}
+  { offset: "Europe/Paris", city: "Paris", img: paris },
 ];
 
 export default class Index extends React.Component {
   constructor(props) {
     super(props);
 
-    let selectedCity = timeZones[Math.floor(Math.random()*5)];
     this.state = {
       isValidated: false,
       pageContent: { ...this.props.data.markdownRemark.frontmatter },
-      selectedCity: selectedCity.city,
-      selectedBG: selectedCity.img,
-
     };
-    console.log(this.state);
   }
 
-  changeBG = (city, bg) => {
-    this.setState({selectedCity: city, selectedBG: bg});
-  };
   render() {
     let content = this.state.pageContent;
+    let selectedCity = timeZones[Math.floor(Math.random() * 5)];
 
     const clocks = timeZones.map(({ offset, city, img }, i) => {
       console.log({ index: i, offset: offset });
-      return <Clock key={i} tzOffset={offset} city={city} onClick={()=>this.changeBG(city, img)} selected={(this.state.selectedCity === city)} />;
+      return (
+        <Clock
+          key={i}
+          tzOffset={offset}
+          city={city}
+          selected={selectedCity.city === city}
+        />
+      );
     });
     return (
       <Layout cta={false} noFooter>
         <SEO title="Contact" />
 
-        <ContactContainer bg={this.state.selectedBG}>
-          <ClockContainer>
-            <Wherever>Wherever You Need Us:</Wherever>
-            {clocks}
-          </ClockContainer>
+        <ContactContainer bg={selectedCity.img}>
           <ContactContent>
             <h1>{content.title}</h1>
 
@@ -79,8 +74,12 @@ export default class Index extends React.Component {
               }}
             />
 
-          <SocialIcons style={{ margin: "auto", color: "#333" }} />
+            <ClockContainer>
+              <Wherever>Wherever You Need Us:</Wherever>
+              {clocks}
+            </ClockContainer>
 
+            <SocialIcons style={{ margin: "auto", color: "#333" }} />
           </ContactContent>
         </ContactContainer>
       </Layout>
@@ -111,6 +110,7 @@ const ContactContainer = styled.section`
   align-items: flex-start;
   background: var(--mainColor) center center no-repeat;
   background-image: url(${(props) => props.bg || "none"});
+  will-change: auto;
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
@@ -120,49 +120,48 @@ const ContactContainer = styled.section`
   @media ${breakpoints.laptop} {
     min-height: 100vh;
     padding-top: 0;
-  grid-template-columns: 1fr 5fr 5fr;
-
+    grid-template-columns: 1fr;
   }
 `;
 
 const ClockContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.25rem;
   align-items: center;
   justify-content: center;
   margin-top: auto;
-  width: 80%;
+  width: 100%;
   margin: 1em auto 1em;
   transition: 300ms;
 
+  padding: 1em;
+  background: #fff;
+  border-radius: var(--borderRadius);
+  color: #333;
+  
+
   @media ${breakpoints.laptop} {
-    margin: auto;
-
-    grid-template-columns: 1fr;
-    background: linear-gradient(to right,  rgba(51,51,51,0.4), rgba(51,51,51,0));
-
-    color: #fff;
-    padding: 1em;
-
+    margin: 1rem;
     width: 100%;
 
-    &:hover{
-    background: linear-gradient(to right,  rgba(51,51,51,0.6), rgba(51,51,51,0));
+    grid-template-columns: repeat(7,  1fr);
 
+    padding: 1em;
+
+    &:hover {
     }
   }
 `;
 
 const Wherever = styled.span`
   font-weight: bold;
-  color: #fff;
   grid-column: 1 / -1;
   display: block;
+  text-align: center;
 
   @media ${breakpoints.laptop} {
-
-    grid-column: 1 / -1;
-
+    grid-column: 1;
   }
 `;
 
@@ -180,16 +179,16 @@ const ContactContent = styled.div`
   margin: 0 auto;
 
   form {
-    width: 95%;
+    width: 100%;
   }
 
-  h1{
+  h1 {
     color: #fff;
     margin-top: auto;
   }
 
   @media ${breakpoints.laptop} {
-    width: 100%;
+    width: 50%;
     height: 100%;
     margin: auto;
     /* background: #fff; */

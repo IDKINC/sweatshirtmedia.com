@@ -29,39 +29,31 @@ const ClockWrapper = styled.div`
   text-align: left;
 
   text-transform: lowercase;
-  margin: 15px 0.5em;
+  /* margin: 15px 0; */
+  padding: 0.5rem;
   position: relative;
-  color: #fff;
-  cursor: pointer;
+  transition: 300ms;
 
-  &:after{
-    content: '';
+  
 
-    width: 25%;
-    height: 3px;
-    background: #fff;
-    position: absolute;
-    bottom: -7.5px;
+  &:hover{
   }
 
   @media ${breakpoints.laptop} {
 
     text-align: left;
 
-    &:after{
-      left: 0;
-    }
+   
 
   }
 
   &.selected{
+    border-bottom: 3px solid var(--mainColor);
     time{
       font-weight: bold;
+      color: var(--mainColor);
     }
-
-    &:after{
-      background: var(--mainColor);
-    }
+    
   }
 
 
