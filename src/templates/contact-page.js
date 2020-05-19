@@ -65,10 +65,6 @@ export default class Index extends React.Component {
           <ContactContent>
             <h1>{content.title}</h1>
 
-            <ClockContainer>
-              <Wherever>Wherever You Need Us:</Wherever>
-              {clocks}
-            </ClockContainer>
             <ContactForm
               labels={{
                 name: content.nameLabel,
@@ -77,6 +73,11 @@ export default class Index extends React.Component {
                 submit: content.submitLabel,
               }}
             />
+
+            <ClockContainer>
+              <Wherever>Wherever You Need Us:</Wherever>
+              {clocks}
+            </ClockContainer>
 
             <SocialIcons style={{ margin: "auto", color: "#333" }} />
           </ContactContent>
@@ -125,21 +126,27 @@ const ContactContainer = styled.section`
 
 const ClockContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.25rem;
   align-items: center;
   justify-content: center;
   margin-top: auto;
-  width: 80%;
+  width: 100%;
   margin: 1em auto 1em;
   transition: 300ms;
 
+  padding: 1em;
+  background: #fff;
+  border-radius: var(--borderRadius);
+  color: #333;
+  
+
   @media ${breakpoints.laptop} {
-    margin: auto;
+    margin: 1rem;
     width: 100%;
 
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(7,  1fr);
 
-    color: #fff;
     padding: 1em;
 
     &:hover {
@@ -149,12 +156,12 @@ const ClockContainer = styled.div`
 
 const Wherever = styled.span`
   font-weight: bold;
-  color: #fff;
   grid-column: 1 / -1;
   display: block;
+  text-align: center;
 
   @media ${breakpoints.laptop} {
-    grid-column: 1 / -1;
+    grid-column: 1;
   }
 `;
 

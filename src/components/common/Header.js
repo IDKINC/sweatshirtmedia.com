@@ -155,7 +155,7 @@ const IconWrapper = styled.div`
   /* backface-visibility: visible; */
   background: rgba(51, 51, 51, 0.3);
 
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+  clip-path: var(--cornerCut);
 
   height: 5rem;
   width: 5rem;
