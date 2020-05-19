@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components";
 
 import logo from "../../img/logo.svg";
 import icon from "../../img/sweatshirt-icon.svg";
-import outline from "../../img/sweatshirt-icon--outline.svg";
 import { breakpoints } from "../breakpoints";
 import { Link } from "gatsby";
 
@@ -135,6 +134,9 @@ const NavBG = styled.div`
 const Icon = styled.img`
   max-height: 100% !important;
   display: block;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+
 `;
 
 const IconWrapper = styled.div`
@@ -148,9 +150,9 @@ const IconWrapper = styled.div`
   z-index: 99999999999999999999999999; /* It's OVER 9000 */
 
   transform: rotateY(0deg);
-
+  /* transform-style: preserve-3d; */
   transition: transform 300ms;
-
+  /* backface-visibility: visible; */
   background: rgba(51, 51, 51, 0.3);
 
   clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
@@ -167,7 +169,6 @@ const IconWrapper = styled.div`
   cursor: pointer;
   transition: 300ms;
 
-  span,
   ${Icon} {
     transform: rotateY(0deg);
     transition: transform 600ms;
@@ -188,9 +189,8 @@ const IconWrapper = styled.div`
 
   &.is-open {
     background: var(--mainColor);
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
 
-    span,
     ${Icon} {
       transform: rotateY(-180deg);
     }
