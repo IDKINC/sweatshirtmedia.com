@@ -4,15 +4,21 @@ import styled, { keyframes } from "styled-components";
 import logo from "../../img/logo.svg";
 import icon from "../../img/sweatshirt-icon.svg";
 import { breakpoints } from "../breakpoints";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 
 import Helmet from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ whiteIcon }) => {
+const Header = ({ whiteIcon, backButton = false, backgroundHeader = true }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const backButtonClick = () => {
+    window.history.back();
+  };
 
   return (
     <>
+      {backButton && <BackButton onClick={backButtonClick}><FontAwesomeIcon icon='arrow-left' /> back</BackButton>}
       <IconWrapper
         onClick={(e) => {
           e.preventDefault();
@@ -47,6 +53,15 @@ const Header = ({ whiteIcon }) => {
           </Nav>
         </HeaderWrapper>
       </StyledHeader>
+
+{backgroundHeader && <BackgroundHeader>
+        <LogoWrapper to="/" title="Logo" onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }}>
+          <Logo src={logo} alt="Sweatshirt" />
+        </LogoWrapper>
+      </BackgroundHeader>}
 
       {isOpen && (
         <NavBG
@@ -97,11 +112,13 @@ const HeaderWrapper = styled.div`
   }
 `;
 
+
 const LogoWrapper = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  margin: 0 1em 0 0;
 `;
 const Logo = styled.img`
   width: 50vw;
@@ -128,7 +145,8 @@ const NavBG = styled.div`
   z-index: 1000;
 
   @media ${breakpoints.laptop} {
-    background: rgba(0, 0, 0, 0);  }
+    background: rgba(0, 0, 0, 0);
+  }
 `;
 
 const Icon = styled.img`
@@ -136,7 +154,6 @@ const Icon = styled.img`
   display: block;
   transform-style: preserve-3d;
   backface-visibility: visible;
-
 `;
 
 const IconWrapper = styled.div`
@@ -290,4 +307,68 @@ const StyledHeader = styled.header`
       min-height: 0;
     }
   }
+`;
+
+const BackgroundHeader = styled.div`
+display: flex;
+align-items: center;
+justify-content: flex-end;
+/* padding: 4rem; */
+
+height: 4rem;
+background: var(--mainColor);
+clip-path: url(#collar);
+
+/* img{filter: invert(1);} */
+
+@media ${breakpoints.laptop} {
+justify-content: center;
+
+
+  height: 8.5rem;
+
+
+}
+
+${Logo}{
+  margin-right: 0;
+}
+
+`
+
+
+const BackButton = styled.button`
+  padding: 0.5rem;
+
+  z-index: 9999999;
+
+  background: #fff;
+  border: none;
+  position: relative;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+  svg,i{
+    font-size: 1rem;
+    width: 0.75rem;
+    margin-right: 0.5ch;
+  }
+
+
+@media ${breakpoints.laptop} {
+
+  position: fixed;
+
+
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+
+  padding: 1rem;
+
+
+}
 `;

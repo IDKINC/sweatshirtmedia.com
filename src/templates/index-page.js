@@ -76,7 +76,7 @@ const IndexPage = ({ data }) => {
   const { team, projects, storyTeller } = data;
 
   return (
-    <Layout noFooter whiteIcon>
+    <Layout noFooter whiteIcon backgroundHeader={false}>
       <SEO title="Sweatshirt Media" />
 
       <IndexPageTemplate

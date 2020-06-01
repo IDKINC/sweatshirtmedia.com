@@ -64,7 +64,7 @@ const SingleProject = (props) => {
 
   console.log(galleryArray);
   return (
-    <Layout whiteIcon>
+    <Layout whiteIcon backButton>
       <SEO
         title={
           project.frontmatter.title +
