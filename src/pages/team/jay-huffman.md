@@ -10,4 +10,8 @@ links:
   website: misterjhuffman.com
 quote: ''
 ---
-Baseball + Books + Music + Space + Startups
+I am a brain.. and an athlete.. and a basket case, a princess, and a criminal. Does tha..
+
+Wait, that’s from The Breakfast Club.
+
+I am a husband, a father, and a person who is perputally busy building things.
