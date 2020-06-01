@@ -7,7 +7,7 @@ weight: 100
 links:
   instagram: 'https://instagram.com/MisterJHuffman'
   twitter: 'https://twitter.com/MisterJHuffman'
-  website: 'https://www.misterjhuffman.com'
+  website: misterjhuffman.com
 quote: ''
 ---
 Baseball + Books + Music + Space + Startups
