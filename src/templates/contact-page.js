@@ -75,8 +75,9 @@ export default class Index extends React.Component {
             />
 
             <ClockContainer>
-              <Wherever>Wherever You Need Us:</Wherever>
+              <Wherever>We're World-Wide:</Wherever>
               {clocks}
+              <Wherever>But You Won't Even Notice.</Wherever>
             </ClockContainer>
 
             <SocialIcons style={{ margin: "auto", color: "#333" }} />
@@ -126,8 +127,8 @@ const ContactContainer = styled.section`
 
 const ClockContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0.25rem;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
   align-items: center;
   justify-content: center;
   margin-top: auto;
@@ -140,12 +141,17 @@ const ClockContainer = styled.div`
   border-radius: var(--borderRadius);
   color: #333;
   
+  @media ${breakpoints.mobileL}{
 
-  @media ${breakpoints.laptop} {
+  grid-template-columns:1fr 1fr 1fr;
+
+  }
+
+  @media ${breakpoints.laptopL} {
     margin: 1rem;
     width: 100%;
 
-    grid-template-columns: repeat(7,  1fr);
+    grid-template-columns: repeat(6,  1fr);
 
     padding: 1em;
 
@@ -161,7 +167,7 @@ const Wherever = styled.span`
   text-align: center;
 
   @media ${breakpoints.laptop} {
-    grid-column: 1;
+    grid-column: 1 / -1;
   }
 `;
 

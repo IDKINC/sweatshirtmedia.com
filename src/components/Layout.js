@@ -12,13 +12,35 @@ const TemplateWrapper = ({
   noFooter = false,
   cta = true,
   whiteIcon = false,
+  backButton = false,
+  backgroundHeader = true,
 }) => {
   return (
-    <div>
-      {!noHeader && <Header whiteIcon={whiteIcon} />}
-      <main>{children}</main>
-      {!noFooter && <Footer cta={cta} />}
-    </div>
+    <>
+      <svg
+      style={{display: "none"}}
+      width="0"
+      height="0"
+      >
+        <defs>
+        <clipPath id="collar">
+          <ellipse cx="50%"cy="0" rx="35%" ry="100%" fill="#f00" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <div>
+        {!noHeader && (
+          <Header
+            whiteIcon={whiteIcon}
+            backButton={backButton}
+            backgroundHeader={backgroundHeader}
+          />
+        )}
+        <main>{children}</main>
+        {!noFooter && <Footer cta={cta} />}
+      </div>
+    </>
   );
 };
 
