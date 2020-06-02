@@ -20,7 +20,7 @@ import Button from "../components/atoms/Button";
 import SEO from "../components/seo";
 import Separator from "../components/atoms/Separator";
 
-export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
+export const IndexPageTemplate = ({ tagline }) => (
   <div>
     <Container
       style={{
@@ -57,7 +57,7 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           style={{ width: "100%", height: "auto", zIndex: 2 }}
         />
         <Tagline>
-        helping you bridge the gap between creative and critical thinking
+        {tagline}
         </Tagline>
         <BannerNav>
           <Button to="/portfolio" label="See Our Work" white />
@@ -81,6 +81,7 @@ const IndexPage = ({ data }) => {
 
       <IndexPageTemplate
         image={frontmatter.image}
+        tagline={frontmatter.tagline}
         team={team.edges}
         projects={projects.edges}
         storyTeller={storyTeller}
@@ -104,21 +105,8 @@ export const pageQuery = graphql`
     index: markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        tagline
         portfolioHeader
-      }
-    }
-    storyTeller: file(relativePath: { eq: "what-the-hex-dark.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 2400) {
-          ...GatsbyImageSharpFluid
-        }
       }
     }
     team: allMarkdownRemark(
@@ -186,9 +174,9 @@ const Tagline = styled.h2`
 
   @media ${breakpoints.laptop} {
 
-    font-size: 1.5rem;
+    font-size: 2rem;
 
-    max-width: 60%;
+    max-width: 80%;
 
   }
   

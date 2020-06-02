@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
 import logo from "../../img/logo.svg";
 import icon from "../../img/sweatshirt-icon.svg";
 import { breakpoints } from "../breakpoints";
-import { Link, navigate } from "gatsby";
+import { Link } from "gatsby";
 
-import Helmet from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ whiteIcon, backButton = false, backgroundHeader = true }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Header = ({ whiteIcon, isHeaderOpen, setIsHeaderOpen, backButton = false, backgroundHeader = true }) => {
 
   const backButtonClick = () => {
     window.history.back();
@@ -22,30 +20,30 @@ const Header = ({ whiteIcon, backButton = false, backgroundHeader = true }) => {
       <IconWrapper
         onClick={(e) => {
           e.preventDefault();
-          setIsOpen(!isOpen);
+          setIsHeaderOpen(!isHeaderOpen);
         }}
-        className={isOpen ? "is-open" : ""}
+        className={isHeaderOpen ? "is-open" : ""}
       >
         <Icon
           src={icon}
           alt="Sweatshirt Icon"
           onClick={(e) => {
             e.preventDefault();
-            setIsOpen(!isOpen);
+            setIsHeaderOpen(!isHeaderOpen);
           }}
           className={
-            (isOpen ? "is-open" : "") + " " + (whiteIcon ? "white-icon" : "")
+            (isHeaderOpen ? "is-open" : "") + " " + (whiteIcon ? "white-icon" : "")
           }
         />
-        <span>{isOpen ? "hide" : "menu"}</span>
+        <span>{isHeaderOpen ? "hide" : "menu"}</span>
       </IconWrapper>
-      <StyledHeader className={isOpen ? "is-open" : ""}>
+      <StyledHeader className={isHeaderOpen ? "is-open" : ""}>
         <HeaderWrapper>
           <LogoWrapper to="/" title="Logo">
             <Logo src={logo} alt="Sweatshirt" />
           </LogoWrapper>
 
-          <Nav className={isOpen ? "is-open" : ""}>
+          <Nav className={isHeaderOpen ? "is-open" : ""}>
             <Link to="/portfolio">portfolio</Link>
             <Link to="/team">team</Link>
             <Link to="/about">about</Link>
@@ -57,16 +55,16 @@ const Header = ({ whiteIcon, backButton = false, backgroundHeader = true }) => {
 {backgroundHeader && <BackgroundHeader>
         <LogoWrapper to="/" title="Logo" onClick={(e) => {
             e.preventDefault();
-            setIsOpen(!isOpen);
+            setIsHeaderOpen(!isHeaderOpen);
           }}>
           <Logo src={logo} alt="Sweatshirt" />
         </LogoWrapper>
       </BackgroundHeader>}
 
-      {isOpen && (
+      {isHeaderOpen && (
         <NavBG
           onClick={() => {
-            setIsOpen(false);
+            setIsHeaderOpen(false);
           }}
         />
       )}
@@ -86,16 +84,6 @@ const slideIn = keyframes`
   }
 `;
 
-const flip = keyframes`
-  0% {
-    transform: rotateY(0deg);
-  
-  }
-
-  100% {
-    transform: rotateY(180deg);
-  }
-`;
 
 const HeaderWrapper = styled.div`
   width: 100vw;

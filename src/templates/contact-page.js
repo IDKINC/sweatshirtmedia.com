@@ -23,14 +23,15 @@ function encode(data) {
     .join("&");
 }
 
-const timeZones = [
-  { offset: "America/Los_Angeles", city: "Los Angeles", img: la },
-  { offset: "America/Denver", city: "Albuquerque", img: albuquerque },
-  { offset: "America/Chicago", city: "Austin", img: austin },
-  { offset: "America/New_York", city: "Atlanta", img: atlanta },
-  { offset: "America/New_York", city: "Boston", img: boston },
-  { offset: "Europe/Paris", city: "Paris", img: paris },
-];
+// const timeZones = [
+//   { offset: "America/Los_Angeles", city: "Los Angeles", img: la },
+//   { offset: "America/Denver", city: "Albuquerque", img: albuquerque },
+//   { offset: "America/Chicago", city: "Austin", img: austin },
+//   { offset: "America/New_York", city: "Atlanta", img: atlanta },
+//   { offset: "America/New_York", city: "Boston", img: boston },
+//   { offset: "Europe/Paris", city: "Paris", img: paris },
+// ];
+
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -44,7 +45,9 @@ export default class Index extends React.Component {
 
   render() {
     let content = this.state.pageContent;
-    let selectedCity = timeZones[Math.floor(Math.random() * 5)];
+    const timeZones = content.timezones
+
+    let selectedCity = timeZones[Math.floor(Math.random() * timeZones.length)];
 
     const clocks = timeZones.map(({ offset, city, img }, i) => {
       console.log({ index: i, offset: offset });
@@ -75,9 +78,9 @@ export default class Index extends React.Component {
             />
 
             <ClockContainer>
-              <Wherever>We're World-Wide:</Wherever>
+              <Wherever>{content.beforeClocks}</Wherever>
               {clocks}
-              <Wherever>But You Won't Even Notice.</Wherever>
+              <Wherever>{content.afterClocks}</Wherever>
             </ClockContainer>
 
             <SocialIcons style={{ margin: "auto", color: "#333" }} />
@@ -99,6 +102,12 @@ export const ContactPageQuery = graphql`
         messageLabel
         submitLabel
         socialHeader
+        beforeClocks
+        afterClocks
+        timezones{
+          offset
+          city
+        }
       }
     }
   }
