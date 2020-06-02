@@ -1,12 +1,12 @@
 ---
-templateKey: "contact-page"
-title: Contact Us
-featuredImage: /img/Boonta Vista.png
-
-
+templateKey: contact-page
+beforeClocks: "We're World-Wide:"
+afterClocks: But You Won't Even Notice.
 nameLabel: Your name
-emailLabel: Email
+featuredImage: /img/Boonta Vista.png
 messageLabel: Message Us
-submitLabel: Send Message
-
+emailLabel: Email
+title: Contact Us
 socialHeader: Find Us Online
+submitLabel: Send Message
+---
