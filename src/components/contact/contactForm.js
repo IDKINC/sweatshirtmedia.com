@@ -126,6 +126,10 @@ ContactForm.defaultProps = {
 const Form = styled.form`
 font-size: 1rem;
 
+background: #fff;
+padding: 1rem;
+border-radius: var(--borderRadius);
+overflow: visible;
 @media ${breakpoints.laptop} {
     font-size: 1.5rem;
 

@@ -10,7 +10,7 @@ const size = {
 }
 
 export const breakpoints = {
-  mobileOnly: `(min-width: ${size.mobileOnly})`,
+  mobileOnly: `(max-width: ${size.mobileOnly})`,
   mobileS: `(min-width: ${size.mobileS})`,
   mobileM: `(min-width: ${size.mobileM})`,
   mobileL: `(min-width: ${size.mobileL})`,

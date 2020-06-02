@@ -1,16 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 
 import logo from "../img/logo.svg";
 
 import Layout from "../components/Layout";
-import TeamCard from "../components/team/TeamCard";
-import ProjectCard from "../components/project/ProjectCard";
-
-import Grid from "../components/layout/grid";
-
 import { breakpoints } from "../components/breakpoints";
 
 import SocialIcons from "../components/SocialIcons";
@@ -21,12 +16,11 @@ import { Container } from "../components/atoms/Container";
 
 import BannerCover from "../img/videobg.jpg";
 
-import SweatshirtIcon from "../img/sweatshirt-icon.svg";
 import Button from "../components/atoms/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SEO from "../components/seo";
+import Separator from "../components/atoms/Separator";
 
-export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
+export const IndexPageTemplate = ({ tagline }) => (
   <div>
     <Container
       style={{
@@ -39,12 +33,13 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
         alignItems: "center",
         justifyContent: "center",
         backfaceVisibility: "visible",
-        position: "relative"
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <VideoBanner />
 
-      <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
+      {/* <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" /> */}
       <div
         style={{
           zIndex: "999",
@@ -53,100 +48,25 @@ export const IndexPageTemplate = ({ image, team, projects, storyTeller }) => (
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         <img
           src={logo}
           alt="Sweatshirt"
-          style={{ width: "100%", height: "auto" }}
+          style={{ width: "100%", height: "auto", zIndex: 2 }}
         />
+        <Tagline>
+        {tagline}
+        </Tagline>
         <BannerNav>
           <Button to="/portfolio" label="See Our Work" white />
           <Button to="/contact" label="Get In Touch &raquo;" />
         </BannerNav>
         <SocialIcons />
       </div>
-    </Container>
 
-    <Container>
-      <h1>
-        <Link to="/portfolio">We Are Makers.</Link>
-      </h1>
-      <Grid col={3}>
-        {projects.map(({ node: project }, i) => (
-          <ProjectCard project={project} />
-          // <ProjectCard project={project} featured={i === 0}/>
-        ))}
-
-        <Button
-          to="/portfolio"
-          label="See The Rest Of Our Work &raquo;"
-          size="large"
-          style={{ gridColumn: "1 / -1" }}
-        />
-      </Grid>
-    </Container>
-
-    <Container
-      style={{
-        minHeight: "80vh",
-        backgroundImage: `url(${
-          !!storyTeller.childImageSharp
-            ? storyTeller.childImageSharp.fluid.src
-            : storyTeller
-        })`,
-        backgroundPosition: "center center",
-        backgroundAttachment: "fixed"
-      }}
-    >
-      <h1
-        style={{
-          color: "#fff",
-          width: "100%",
-          textShadow:
-            "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)"
-        }}
-      >
-        We Are Storytellers.
-      </h1>
-      <Grid col={3} style={{ background: "transparent", width: "80%" }}>
-        <SkillsCard>
-          <h4>Brand Identity</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <h4>Video Production</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <h4>Photography</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <h4>Art Direction</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <h4>Web Development</h4>
-        </SkillsCard>
-        <SkillsCard>
-          <h4>Marketing Strategy</h4>
-        </SkillsCard>
-      </Grid>
-    </Container>
-
-    <Container>
-      <h1>
-        <Link to="/team">Get To Know Us.</Link>
-      </h1>
-      <Grid col={4}>
-        {team.map(({ node: member }) => (
-          <TeamCard person={member} />
-        ))}
-        <Button
-          to="/team"
-          label="Meet The Team &raquo;"
-          size="large"
-          style={{ gridColumn: "1 / -1" }}
-        />
-      </Grid>
+      <Separator color="var(--mainColor)" />
     </Container>
   </div>
 );
@@ -156,11 +76,12 @@ const IndexPage = ({ data }) => {
   const { team, projects, storyTeller } = data;
 
   return (
-    <Layout noHeader>
-    <SEO title="Sweatshirt Media" />
+    <Layout noFooter whiteIcon backgroundHeader={false}>
+      <SEO title="Sweatshirt Media" />
 
       <IndexPageTemplate
         image={frontmatter.image}
+        tagline={frontmatter.tagline}
         team={team.edges}
         projects={projects.edges}
         storyTeller={storyTeller}
@@ -172,9 +93,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object
-    })
-  })
+      frontmatter: PropTypes.object,
+    }),
+  }),
 };
 
 export default IndexPage;
@@ -184,21 +105,8 @@ export const pageQuery = graphql`
     index: markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        tagline
         portfolioHeader
-      }
-    }
-    storyTeller: file(relativePath: { eq: "what-the-hex-dark.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 2400) {
-          ...GatsbyImageSharpFluid
-        }
       }
     }
     team: allMarkdownRemark(
@@ -257,49 +165,23 @@ export const pageQuery = graphql`
   }
 `;
 
-const SkillsCard = styled.div`
-  background: #fff;
-  padding: 1rem;
-  transition: 100ms;
-  box-shadow: var(--boxShadow);
-  border-radius: var(--borderRadius);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  h4 {
-    margin: 0;
-    text-align: center;
-
-    font-size: 0.8em;
-
-    @media ${breakpoints.laptop} {
-      font-size: inherit;
-    }
-  }
-
-  &:hover {
-    background: var(--mainColor);
-    color: #fff;
-  }
-`;
-
-const SweatshirtIconStyled = styled.img`
-  opacity: 0.5;
-  width: 15%;
-  height: auto;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 999999;
+const Tagline = styled.h2`
+  color: #fff;
+  margin: 0;
+  font-size: 1rem;
+  max-width: 100%;
+  text-align: center;
 
   @media ${breakpoints.laptop} {
-    bottom: 3em;
-    right: 3em;
-    width: 10%;
+
+    font-size: 2rem;
+
+    max-width: 80%;
+
   }
+  
 `;
+
 
 const BannerNav = styled.nav`
   width: 100%;
@@ -310,8 +192,14 @@ const BannerNav = styled.nav`
   margin: 2rem 0;
   color: #fff;
 
+  z-index: 2;
   a {
     margin-bottom: 1em;
+    text-transform: lowercase;
+
+    &.main{
+      background: var(--mainColor);
+    }
   }
 
   @media ${breakpoints.laptop} {
@@ -319,56 +207,6 @@ const BannerNav = styled.nav`
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
 
-    width: 50vw;
-  }
-`;
-
-const MeetTheTeam = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--borderRadius);
-  z-index: 1;
-  transition: 300ms;
-
-  @media ${breakpoints.laptop} {
-    flex-direction: column;
-
-    font-size: 2rem;
-    svg {
-      width: 4rem;
-    }
-  }
-
-  &:before {
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    left: 0;
-    background: var(--mainColor);
-    content: "";
-    z-index: -1;
-    transition: 300ms;
-  }
-
-  &:hover {
-    color: #fff;
-
-    &:before {
-      width: 100%;
-    }
-  }
-
-  &:active {
-    color: var(--darkerColor);
-
-    &:before {
-      left: unset;
-      right: 0;
-      width: 0;
-    }
+    width: 30vw;
   }
 `;

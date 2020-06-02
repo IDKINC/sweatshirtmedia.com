@@ -13,11 +13,22 @@ $darkerColor: darken($mainColor, 10);
   --mainColor: #a29bfe;
   --darkerColor: #6c5ce7;
   --green: #4CAF50;
+  --gray: #333;
+  --grey: #333;
   --borderRadius: 10px;
   --boxShadow: 0 3px 6px -2px rgba(0, 0, 0, 0.4);
+
+  --clipPath: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0% 100%);
+
+--clipPathTriangle: polygon(15% 0, 17% 15%, 20% 30%, 28% 60%, 40% 90%, 45% 97%, 50% 100%, 85% 0);
+
+--cornerCut: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
 }
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,900, 900i&display=swap");
+// @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,900,900i&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,900;1,400&display=swap');
+
 @font-face {
   font-family: "SeattleSans";
   src: url("../fonts/SeattleSans.eot"); /* IE9 Compat Modes */
@@ -41,7 +52,7 @@ body {
   line-height: 1.65;
   color: #333;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 p {

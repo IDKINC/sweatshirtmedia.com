@@ -42,6 +42,7 @@ collections:
     create: true
     slug: "{{slug}}"
     identifier_field: "name"
+    filter: {field: "templateKey", value: "team-member"}
     fields:
       - {
           label: "Template Key",
@@ -165,45 +166,60 @@ collections:
               default: "index-page",
             }
           - { label: Title, name: title, widget: string }
-          - { label: Image, name: image, widget: image }
+          - { label: Tagline, name: tagline, widget: string }
+          
+      - file: "src/pages/contact/index.md"
+        label: "Contact Page"
+        name: "contact"
+        fields:
           - {
-              label: Portfolio Section Header,
-              name: portfolioHeader,
-              widget: string,
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
             }
-          - {
-              label: Services,
-              name: services,
-              widget: object,
+          - { label: Text Before Clocks, name: beforeClocks, widget: string }
+
+          - {label: Cities,
+              name: timezones,
+              widget: list,
               fields:
                 [
                   {
-                    label: Service Section Heading,
-                    name: heading,
+                    label: City,
+                    name: city,
+                    widget: string
+                  },
+                  {
+                    label: Timezone,
+                    name: offset,
                     widget: string,
                   },
-                  { label: Description, name: description, widget: text },
                   {
-                    label: Services We Provide,
-                    name: serviceList,
-                    widget: list,
-                    fields:
-                      [
-                        {
-                          label: Service Section Heading,
-                          name: heading,
-                          widget: string,
-                        },
-                        {
-                          label: Services Sub List,
-                          name: serviceSubList,
-                          widget: list,
-                          fields: [{ label: Text, name: text, widget: string }],
-                        },
-                      ],
-                  },
-                ],
+                    label: City Image,
+                    name: img,
+                    widget: image
+                  }
+                ]
+              }
+              
+          - { label: Text After Clocks, name: afterClocks, widget: string }
+
+      - file: "src/pages/team/index.md"
+        label: "Team Page"
+        name: "team"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
             }
+          - {
+            label: "Page Title",
+            name: "title",
+            widget: "string"
+          }
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

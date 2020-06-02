@@ -1,59 +1,100 @@
-import React from 'react'
-import { navigate } from 'gatsby-link'
-import Layout from '../components/Layout'
-import ContactForm from '../components/contact/contactForm'
+import React from "react";
+import Layout from "../components/Layout";
+import ContactForm from "../components/contact/contactForm";
 
-import { breakpoints } from "../components/breakpoints"
+import { breakpoints } from "../components/breakpoints";
 
-import styled from "styled-components"
-import waves from '../img/waves.svg'
-import SocialIcons from '../components/SocialIcons'
-import SEO from '../components/seo'
+import styled from "styled-components";
 
+import SocialIcons from "../components/SocialIcons";
+import SEO from "../components/seo";
+import Clock from "../components/Clock";
 
+// import atlanta from "../img/city-bg.jpg";
+// import la from "../img/la.jpg";
+// import albuquerque from "../img/albuquerque.jpg";
+// import austin from "../img/austin.jpg";
+// import boston from "../img/boston.jpg";
+// import paris from "../img/paris.jpg";
 
 function encode(data) {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
 }
+
+// const timeZones = [
+//   { offset: "America/Los_Angeles", city: "Los Angeles", img: la },
+//   { offset: "America/Denver", city: "Albuquerque", img: albuquerque },
+//   { offset: "America/Chicago", city: "Austin", img: austin },
+//   { offset: "America/New_York", city: "Atlanta", img: atlanta },
+//   { offset: "America/New_York", city: "Boston", img: boston },
+//   { offset: "Europe/Paris", city: "Paris", img: paris },
+// ];
 
 export default class Index extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { isValidated: false, pageContent: {...this.props.data.markdownRemark.frontmatter} }
-    console.log(this.state);
+    super(props);
+
+    this.state = {
+      isValidated: false,
+      pageContent: { ...this.props.data.markdownRemark.frontmatter },
+    };
   }
-
-
 
   render() {
-    let content = this.state.pageContent
+    let content = this.state.pageContent;
+    const timeZones = content.timezones;
+
+    let selectedCity = timeZones[Math.floor(Math.random() * timeZones.length)];
+
+    const clocks = timeZones.map(({ offset, city, img }, i) => {
+      console.log({ index: i, offset: offset });
+      return (
+        <Clock
+          key={i}
+          tzOffset={offset}
+          city={city}
+          selected={selectedCity.city === city}
+        />
+      );
+    });
+    console.log(content);
     return (
-      <Layout cta={false}>
-    <SEO title="Contact" />
+      <Layout cta={false} noFooter>
+        <SEO title="Contact" />
 
-        <ContactContainer>
-            <ContactContent>
-              <h1>{ content.title }</h1>
-              
-              <ContactForm labels={{name: content.nameLabel, email: content.emailLabel, message: content.messageLabel, submit: content.submitLabel  }} />
-      <hr className="or" />
-      <h4 style={{margin: 0}}>{content.socialHeader}</h4> 
-              <SocialIcons color="#333" width="3rem"/>
+        <ContactContainer bg={selectedCity.img.childImageSharp.fluid.src}>
+          <ContactContent>
+            <h1>{content.title}</h1>
 
-            </ContactContent>
+            <ContactForm
+              labels={{
+                name: content.nameLabel,
+                email: content.emailLabel,
+                message: content.messageLabel,
+                submit: content.submitLabel,
+              }}
+            />
+
+            <ClockContainer>
+              <Wherever>{content.beforeClocks}</Wherever>
+              {clocks}
+              <Wherever>{content.afterClocks}</Wherever>
+            </ClockContainer>
+
+            <SocialIcons style={{ margin: "auto", color: "#333" }} />
+          </ContactContent>
         </ContactContainer>
       </Layout>
-    )
+    );
   }
 }
-
-
 
 export const ContactPageQuery = graphql`
   query ContactPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
+      id
       html
       frontmatter {
         title
@@ -62,69 +103,117 @@ export const ContactPageQuery = graphql`
         messageLabel
         submitLabel
         socialHeader
+        beforeClocks
+        afterClocks
+        timezones {
+          offset
+          city
+          img {
+            childImageSharp {
+              fluid(maxWidth: 4000) {
+                src
+              }
+            }
+          }
+        }
       }
     }
   }
-`
+`;
 
 const ContactContainer = styled.section`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  background: var(--mainColor) center center no-repeat;
+  background-image: url(${(props) => props.bg || "none"});
+  will-change: auto;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  flex-direction: column;
+  padding-top: 7em;
 
-width: 100%;
-display: flex;
-background: var(--mainColor) url(${waves}) bottom center no-repeat;
-background-size: 100%;
-overflow: hidden;
-flex-direction: column;
+  @media ${breakpoints.laptop} {
+    min-height: 100vh;
+    padding-top: 0;
+    grid-template-columns: 1fr;
+  }
+`;
 
-@media ${breakpoints.laptop} {
+const ClockContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+  margin: 1em auto 1em;
+  transition: 300ms;
 
-  flex-direction: row;
-  min-height: 85vh;
+  padding: 1em;
+  background: #fff;
+  border-radius: var(--borderRadius);
+  color: #333;
 
+  @media ${breakpoints.mobileL} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
-}
+  @media ${breakpoints.laptopL} {
+    margin: 1rem;
+    width: 100%;
 
+    grid-template-columns: repeat(6, 1fr);
 
+    padding: 1em;
 
-`
+    &:hover {
+    }
+  }
+`;
+
+const Wherever = styled.span`
+  font-weight: bold;
+  grid-column: 1 / -1;
+  display: block;
+  text-align: center;
+
+  @media ${breakpoints.laptop} {
+    grid-column: 1 / -1;
+  }
+`;
 
 const ContactContent = styled.div`
+  /* background: #fff; */
 
-background: #fff;
+  padding: 1em;
 
-padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
+  width: 95%;
+  margin: 0 auto;
 
+  form {
+    width: 100%;
+  }
 
-form{ width: 95%;}
+  h1 {
+    color: #fff;
+    margin-top: auto;
+  }
 
-
-@media ${breakpoints.laptop} {
-
-width: 50%; 
-margin-left: auto;
-background: #fff;
-z-index: 1;
-position: relative;
-
-&:after{
-  content: '';
-  width: 6vw;
-  height: 105vh;
-  transform: rotate(5deg) translate(-50%);
-  position: absolute;
-  // border: 1px solid red;
-  background: #fff;
-  z-index: -1;
-  top: 0;
-  left: 0;
-}
-
-}
-
-
-`
+  @media ${breakpoints.laptop} {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    /* background: #fff; */
+    z-index: 1;
+    position: relative;
+  }
+`;
