@@ -8,5 +8,9 @@ messageLabel: Message Us
 emailLabel: Email
 title: Contact Us
 socialHeader: Find Us Online
+timezones:
+  - offset: America/Los_Angeles
+    city: Los Angeles
+    img: /img/la.jpg
 submitLabel: Send Message
 ---
