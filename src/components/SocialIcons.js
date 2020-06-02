@@ -7,15 +7,15 @@ import styled from "styled-components";
 const SocialIcons = ({ color, width, style={} }) => {
   return (
     <SocialIconsGrid color={color} width={width} style={{...style}}>
-      <a title="twitter" href="https://twitter.com/mediasweatshirt">
+      <a target="_blank" rel="noopener noreferrer" title="twitter" href="https://twitter.com/mediasweatshirt">
         <FontAwesomeIcon width="16" icon={["fab", "twitter"]} />
       </a>
 
-      <a title="instagram" href="https://www.instagram.com/mediasweatshirt/">
+      <a target="_blank" rel="noopener noreferrer" title="instagram" href="https://www.instagram.com/mediasweatshirt/">
         <FontAwesomeIcon width="16" icon={["fab", "instagram"]} />
       </a>
       
-      <a title="linkedin" href="https://www.linkedin.com/mediasweatshirt/">
+      <a target="_blank" rel="noopener noreferrer" title="linkedin" href="https://www.linkedin.com/company/sweatshirt-media">
         <FontAwesomeIcon width="16" icon={["fab", "linkedin"]} />
       </a>
     </SocialIconsGrid>

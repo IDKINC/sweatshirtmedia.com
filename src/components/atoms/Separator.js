@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { breakpoints } from "../breakpoints";
 
 const Separator = ({ flipped, color="#ffffff", style={} }) => {
   const path = flipped ? "polygon(0 0, 100% 0, 100% 50%, 0% 100%)" : "polygon(0 0, 100% 50%, 100% 100%, 0% 100%)";

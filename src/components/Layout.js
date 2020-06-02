@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../components/Footer";
 import "./all.scss";
 import "slick-carousel/slick/slick.css";
@@ -15,6 +15,8 @@ const TemplateWrapper = ({
   backButton = false,
   backgroundHeader = true,
 }) => {
+
+  const [isHeaderOpen, setIsHeaderOpen] = useState(false)
   return (
     <>
       <svg
@@ -35,6 +37,8 @@ const TemplateWrapper = ({
             whiteIcon={whiteIcon}
             backButton={backButton}
             backgroundHeader={backgroundHeader}
+            isHeaderOpen={isHeaderOpen}
+            setIsHeaderOpen={setIsHeaderOpen}
           />
         )}
         <main>{children}</main>
