@@ -44,12 +44,10 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
-          },
+          {resolve: 'gatsby-remark-relative-images',
+                  options: {
+            name: "uploads" // Must match the source name ^
+          }},
           {
             resolve: 'gatsby-remark-images',
             options: {
