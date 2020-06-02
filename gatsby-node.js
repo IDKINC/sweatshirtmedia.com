@@ -55,6 +55,7 @@ exports.createPages = ({ actions, graphql }) => {
         filteredPosts[relatedIndexes[4]].node,
         filteredPosts[relatedIndexes[5]].node]
       }
+      console.log(node);
 
       createPage({
         path: node.fields.slug,

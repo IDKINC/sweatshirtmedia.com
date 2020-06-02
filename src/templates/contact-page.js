@@ -10,12 +10,12 @@ import SocialIcons from "../components/SocialIcons";
 import SEO from "../components/seo";
 import Clock from "../components/Clock";
 
-import atlanta from "../img/city-bg.jpg";
-import la from "../img/la.jpg";
-import albuquerque from "../img/albuquerque.jpg";
-import austin from "../img/austin.jpg";
-import boston from "../img/boston.jpg";
-import paris from "../img/paris.jpg";
+// import atlanta from "../img/city-bg.jpg";
+// import la from "../img/la.jpg";
+// import albuquerque from "../img/albuquerque.jpg";
+// import austin from "../img/austin.jpg";
+// import boston from "../img/boston.jpg";
+// import paris from "../img/paris.jpg";
 
 function encode(data) {
   return Object.keys(data)
@@ -32,7 +32,6 @@ function encode(data) {
 //   { offset: "Europe/Paris", city: "Paris", img: paris },
 // ];
 
-
 export default class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +44,7 @@ export default class Index extends React.Component {
 
   render() {
     let content = this.state.pageContent;
-    const timeZones = content.timezones
+    const timeZones = content.timezones;
 
     let selectedCity = timeZones[Math.floor(Math.random() * timeZones.length)];
 
@@ -60,11 +59,12 @@ export default class Index extends React.Component {
         />
       );
     });
+    console.log(content);
     return (
       <Layout cta={false} noFooter>
         <SEO title="Contact" />
 
-        <ContactContainer bg={selectedCity.img}>
+        <ContactContainer bg={selectedCity.img.childImageSharp.fluid.src}>
           <ContactContent>
             <h1>{content.title}</h1>
 
@@ -94,6 +94,7 @@ export default class Index extends React.Component {
 export const ContactPageQuery = graphql`
   query ContactPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
+      id
       html
       frontmatter {
         title
@@ -104,9 +105,16 @@ export const ContactPageQuery = graphql`
         socialHeader
         beforeClocks
         afterClocks
-        timezones{
+        timezones {
           offset
           city
+          img {
+            childImageSharp {
+              fluid(maxWidth: 4000) {
+                src
+              }
+            }
+          }
         }
       }
     }
@@ -149,18 +157,16 @@ const ClockContainer = styled.div`
   background: #fff;
   border-radius: var(--borderRadius);
   color: #333;
-  
-  @media ${breakpoints.mobileL}{
 
-  grid-template-columns:1fr 1fr 1fr;
-
+  @media ${breakpoints.mobileL} {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   @media ${breakpoints.laptopL} {
     margin: 1rem;
     width: 100%;
 
-    grid-template-columns: repeat(6,  1fr);
+    grid-template-columns: repeat(6, 1fr);
 
     padding: 1em;
 
