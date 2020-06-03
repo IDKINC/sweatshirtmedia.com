@@ -79,18 +79,48 @@ VideoBanner.propTypes = {
 export default VideoBanner
 
 const VideoContainer = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-width: 100%;
-height: 100%;
-z-index: 1;
-`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 
+  &:after{
+    content: '';
+    /* background: var(--mainColor); */
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    display: block;
+    top: 0;
+    opacity: 0.5;
+  }
+`;
 
 const VideoControls = styled.div`
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  transform: rotate(-90deg);
+  transform-origin: 100% 50%;
+  color: #fff;
+  transition: 300ms;
+  z-index: 3;
+
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    font-size: 0.8rem;
+    &:hover {
+      opacity: 0.7;
+      color: var(--mainColor);
+    }
+  }
 
 position: absolute;
 bottom: 1em;

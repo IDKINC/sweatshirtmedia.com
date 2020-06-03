@@ -5,7 +5,8 @@ import Img from "gatsby-image";
 
 import styled from "styled-components"
 
-import React from "react"
+import React from "react";
+import { breakpoints } from "../breakpoints";
 
 const Meta = styled.div`
   display: flex;
@@ -20,8 +21,17 @@ const Meta = styled.div`
 
   p{
     font-weight: 100;
-    text-align: center;
     margin: 0;
+    font-size: 0.8rem;
+    text-align: left;
+    width: 100%;
+
+    @media ${breakpoints.laptop} {
+    text-align: center;
+    
+    font-size: 1rem;
+
+    }
   }
 
 `

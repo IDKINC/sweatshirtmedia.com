@@ -8,19 +8,24 @@ import { breakpoints } from "./breakpoints";
 
 import logo from "../img/logo.svg";
 import waves from "../img/waves.svg";
-import ContactForm from "./contact/contactForm";
 import Button from "./atoms/Button";
 
 const Footer = class extends React.Component {
   render() {
     return (
       <>
+
         {this.props.cta && (
           <FooterCTA>
-            <div>
-              <h2>Like What You See?</h2>
-            </div>
+            {/* <div>
+              <h2>Let us earn that "favorite <img
+                src={logo}
+                alt="Sweatshirt"
+                style={{ width: "auto", height: "1em", verticalAlign: "middle" }}
+              />" title.</h2>
+            </div> */}
             <Button to="/contact" label="Let's Talk »" size="large" white />
+
           </FooterCTA>
         )}
 
@@ -67,27 +72,23 @@ const FooterCTA = styled.footer`
   background: var(--mainColor) url(${waves}) bottom center no-repeat;
   background-size: 100%;
   padding: 3rem 1rem;
-  min-height: 25vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   color: #fff;
+  position: relative;
 
   align-items: center;
   justify-content: center;
 
-  @media ${breakpoints.laptop} {
-    padding: 3rem;
-    flex-direction: row;
-  }
+  clip-path: var(--clipPath);
+  margin-bottom: -2em;
 
-  & > div {
-    margin-left: 0;
-    text-align: center;
-  }
-  h1,
-  h2 {
-    font-weight: 900;
-    margin: 0 auto;
+  @media ${breakpoints.laptop} {
+
+    margin-bottom: -2em;
+    /* padding: 12rem 3rem 12rem; */
+    flex-direction: row;
   }
 
   a.button {
@@ -98,7 +99,7 @@ const FooterCTA = styled.footer`
       margin: 1rem;
 
     @media ${breakpoints.laptop} {
-      width: auto;
+      width: 50%;
     }
   }
 
@@ -117,9 +118,10 @@ const FooterCTA = styled.footer`
 `;
 
 const StyledFooter = styled.footer`
-  padding: 0 3rem;
-  background: var(--darkerColor);
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+  padding: 3rem;
+  padding-bottom: 1.5rem;
+  background: var(--gray);
+  /* box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2); */
 
   display: flex;
   align-items: center;

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 import styled from 'styled-components'
 
@@ -66,16 +65,16 @@ const Navbar = class extends React.Component {
           >
             <div className="navbar-start has-text-centered">
               <Link className="navbar-item" to="/portfolio">
-                Portfolio
+                portfolio
               </Link>
               <Link className="navbar-item" to="/team">
-                Team
+                team
               </Link>
               <Link className="navbar-item" to="/about">
-                About
+                about
               </Link>
               <Link className="navbar-item" to="/contact">
-                Contact
+                contact
               </Link>
             </div>
           </div>
