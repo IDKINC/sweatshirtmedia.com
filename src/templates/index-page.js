@@ -54,7 +54,7 @@ export const IndexPageTemplate = ({ tagline }) => (
         <img
           src={logo}
           alt="Sweatshirt"
-          style={{ width: "100%", height: "auto", zIndex: 2 }}
+          style={{ width: "100%", height: "auto" }}
         />
         <Tagline>
         {tagline}

@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 
 const Slide = ({ settings, children }) => {
-  const defaultSettings = {
+  const defaultSettings = { 
     dots: true,
     infinite: true,
     speed: 500,
