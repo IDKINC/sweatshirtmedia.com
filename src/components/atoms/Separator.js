@@ -6,7 +6,7 @@ const Separator = ({ flipped, color="#ffffff", style={} }) => {
   return (
     <SeparatorWrapper flipped={flipped} path={path} color={color} style={{...style}}>
     </SeparatorWrapper>
-  ); 
+  );
 };
 
 export default Separator;
