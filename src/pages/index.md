@@ -1,16 +1,16 @@
 ---
 templateKey: index-page
 title: Sweatshirt Media
-tagline: "built to help you bridge the gap between creative and critical thinking."
+tagline: built to help you bridge the gap between creative and critical thinking
 image: /img/landing-page-banner.jpg
 portfolioHeader: We Are Makers.
 services:
-  description: >-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et
-    tortor faucibus, consequat ex in, mattis diam. Mauris sed nulla neque. Proin
-    libero ipsum, posuere in est non, semper varius felis. Vivamus maximus justo
-    sed lorem aliquam ullamcorper. Nam vel feugiat velit. Duis mollis non nunc
-    sit amet vulputate. Suspendisse vulputate tincidunt tellus.
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Suspendisse et tortor faucibus, consequat ex in, mattis diam. Mauris sed
+    nulla neque. Proin libero ipsum, posuere in est non, semper varius felis.
+    Vivamus maximus justo sed lorem aliquam ullamcorper. Nam vel feugiat velit.
+    Duis mollis non nunc sit amet vulputate. Suspendisse vulputate tincidunt
+    tellus.
   heading: We Are Storytellers
   serviceList:
     - heading: Brand Identity
@@ -18,4 +18,3 @@ services:
         - text: Logo Design
         - text: Website Development
 ---
-
