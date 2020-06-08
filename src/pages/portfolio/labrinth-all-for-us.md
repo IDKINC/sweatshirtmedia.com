@@ -4,7 +4,7 @@ title: All For Us
 featuredImage: /img/All For Us.png
 clients:
   - Labrinth
-weight: ""
+weight: 0
 youtubeLink: https://www.youtube.com/watch?v=WcF60CKr5m4
 embedYouTube: false
 type: Music Video Art Direction
