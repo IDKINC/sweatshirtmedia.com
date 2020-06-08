@@ -90,7 +90,9 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledButton = styled(StyledLink)`
+const StyledButton = styled(StyledLink).attrs({
+  as: "button"
+})`
   border: none;
   cursor: pointer;
 `;

@@ -100,7 +100,7 @@ export default class ContactForm extends React.Component {
                             onChange={this.handleChange}
                             id={'message'}
                             required={true}
-                            minlength={20}
+                            minLength={20}
                         />
                     </div>
                 </div>
