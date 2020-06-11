@@ -4,13 +4,9 @@ title: Wild Leap Brew Co.
 featuredImage: /img/Wild Leap Brew Co.png
 weight: 998
 embedYouTube: false
-externalLink: 'https://www.wildleap.com/'
+externalLink: https://www.wildleap.com/
 type: Packaging + Apparel Design
 images:
-  - image: /img/WL-Merch-BuffLinesTees+Graphc.jpg
-  - image: /img/WL-Merch-TechniBuffTees+Graphc.jpg
-  - image: /img/WL-Merch-BuffLinesTees.jpg
-  - image: /img/WL-Merch-TechniBuffTees.jpg
   - image: /img/79+Series+Summer+IPA.jpeg
   - image: /img/Metagalactic+Enigma.jpeg
   - image: /img/OG+Cascade.jpeg
